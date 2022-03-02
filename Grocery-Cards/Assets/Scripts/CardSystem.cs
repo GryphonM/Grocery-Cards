@@ -11,7 +11,6 @@ public class CardSystem : MonoBehaviour
     public GameObject[] bagSnapPoints;
     [HideInInspector] public int currentBankableID = 999; //999 is value when cannot bank
     [HideInInspector] public int currentCardID = 999; //999 is value when no card selected
-    [HideInInspector] public GameObject heldCard;
     private Camera mainCamera;
     public GameObject mouseCursor3d;
     private bool parentCardToMouse = false;
@@ -33,9 +32,23 @@ public class CardSystem : MonoBehaviour
                 bags[i].gameObject.transform.position = bagSnapPoints[i].transform.position;
         }
     }
+    void moveConvayerBelt()
+    {
+        for (int i = cards.Length - 1; i > 0; i--)
+        {
+            if (cards[i - 1] == null && i - 1 >= 0 && cards[i] != null)
+            {
+                cards[i - 1] = cards[i];
+                cards[i] = null;
+                cards[i - 1].cardID = i - 1;
+                cards[i - 1].gameObject.transform.position = conveyorSnapPoints[i - 1].transform.position;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        moveConvayerBelt();
         //getting a point at the mouse
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, ~layerMask))
@@ -56,6 +69,27 @@ public class CardSystem : MonoBehaviour
         {
             cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, heightOfCard, mouseCursor3d.transform.position.z);
         }
+        //parent card to point
+        if (parentCardToMouse == true && currentCardID != 999)
+        {
+            cards[currentCardID].transform.position = mouseCursor3d.transform.position;
+        }
+        //banking cards into bags
+        if (currentBankableID != 999 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag != "bag")
+        {
+            if (bags[currentBankableID].bagSpace - cardToParentGameObject.GetComponent<Card>().cost < 0)
+            {
+                //make void the bag
+                Debug.Log("Bag Void");
+            }
+            else
+            {
+                //update the bag / delete card
+                bags[currentBankableID].bagSpace -= cardToParentGameObject.GetComponent<Card>().cost;
+                bags[currentBankableID].cardsDeposited += 1;
+                Destroy(cardToParentGameObject.transform.gameObject);
+            }            
+        }
         //Release card
         if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
         {
@@ -71,27 +105,5 @@ public class CardSystem : MonoBehaviour
             }
             parentCardToMouse = false;
         }
-        //parent card to point
-        if (parentCardToMouse == true && currentCardID != 999)
-        {
-            cards[currentCardID].transform.position = mouseCursor3d.transform.position;
-        }
-        //banking cards into bags
-        if (currentBankableID != 999 && Input.GetKeyUp(KeyCode.Mouse0) && heldCard.tag != "bag")
-        {
-            if (bags[currentBankableID].bagSpace - heldCard.GetComponent<Card>().cost < 0)
-            {
-                //make void the bag
-            }
-            else
-            {
-                //update the bag / delete card
-                bags[currentBankableID].bagSpace -= raycastHitCards.transform.GetComponent<Card>().cost;
-                bags[currentBankableID].cardsDeposited += 1;
-                Destroy(raycastHitCards.transform.gameObject);
-            }            
-        }
-
-
     }
 }

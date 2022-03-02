@@ -16,7 +16,6 @@ public class Bag : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("card is in the bag");
         if (other.gameObject.tag == "card")
         {
             if (bagType == other.gameObject.GetComponent<Card>().cardType)
