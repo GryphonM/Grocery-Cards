@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
@@ -11,4 +12,10 @@ public class Card : MonoBehaviour
     public int cost;
     public int cardType;
     public int cardID;
+
+    private void Start()
+    {
+        if (transform.childCount > 0)
+            transform.GetChild(0).GetComponent<TextMeshPro>().SetText(cost.ToString());
+    }
 }

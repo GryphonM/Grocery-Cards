@@ -52,7 +52,6 @@ public class MusicPlayer : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        
         FindRightTrack();
     }
 
