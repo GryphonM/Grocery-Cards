@@ -10,4 +10,5 @@ public class Card : MonoBehaviour
     // 2 = hot
     public int cost;
     public int cardType;
+    public int cardID;
 }
