@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560683a48fe69404987b3ad690f49fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardHeightOffset: 1
+  cardHeightOffset: 0.25
   bags: []
   cards:
   - {fileID: 1646732869}
