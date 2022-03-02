@@ -14,7 +14,7 @@ public class Bag : MonoBehaviour
     {
         cardSyst = FindObjectOfType<CardSystem>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "card")
         {
