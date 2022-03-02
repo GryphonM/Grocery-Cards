@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Bag : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class Bag : MonoBehaviour
     private void Start()
     {
         cardSyst = FindObjectOfType<CardSystem>();
+    }
+    private void Update()
+    {
+        if (transform.childCount > 0)
+            transform.GetChild(0).GetComponent<TextMeshPro>().SetText(bagSpace.ToString());
     }
     private void OnTriggerStay(Collider other)
     {
