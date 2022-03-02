@@ -9,15 +9,20 @@ public class Bag : MonoBehaviour
     public int bagType;
     public int cardsDeposited;
     private CardSystem cardSyst;
+
     private void Start()
     {
         cardSyst = FindObjectOfType<CardSystem>();
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (bagType == other.GetComponent<Card>().cardType)
+        Debug.Log("card is in the bag");
+        if (other.gameObject.tag == "card")
         {
-            cardSyst.currentBankableID = bagID;
+            if (bagType == other.gameObject.GetComponent<Card>().cardType)
+            {
+                cardSyst.currentBankableID = bagID;
+            }
         }
     }
     private void OnTriggerExit(Collider other)

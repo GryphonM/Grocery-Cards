@@ -4,25 +4,33 @@ using UnityEngine;
 //banking cards
 public class CardSystem : MonoBehaviour
 {
+    public float cardHeightOffset;
     public Bag[] bags;
     public Card[] cards;
     public GameObject[] conveyorSnapPoints;
+    public GameObject[] bagSnapPoints;
     [HideInInspector] public int currentBankableID = 999; //999 is value when cannot bank
     [HideInInspector] public int currentCardID = 999; //999 is value when no card selected
     [HideInInspector] public GameObject heldCard;
     private Camera mainCamera;
     public GameObject mouseCursor3d;
     private bool parentCardToMouse = false;
-    private int cardToParent = 999;
     private int layerMask = 1 << 6;
     private GameObject cardToParentGameObject;
+    private float heightOfCard;
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
         for (int i = 0; i < conveyorSnapPoints.Length; i++)
         {
-            cards[i].gameObject.transform.position = conveyorSnapPoints[i].transform.position;
+            if(cards[i] != null)
+                cards[i].gameObject.transform.position = conveyorSnapPoints[i].transform.position;
+        }
+        for (int i = 0; i < bags.Length; i++)
+        {
+            if(bags[i] != null)
+                bags[i].gameObject.transform.position = bagSnapPoints[i].transform.position;
         }
     }
     // Update is called once per frame
@@ -33,21 +41,32 @@ public class CardSystem : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, ~layerMask))
         {
             mouseCursor3d.transform.position = raycastHit.point;           
-        }
+        }        
         if (Physics.Raycast(ray, out RaycastHit raycastHitCards, Mathf.Infinity, layerMask))
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && parentCardToMouse != true)
-            {
+            {                
                 cardToParentGameObject = raycastHitCards.transform.gameObject;
+                heightOfCard = raycastHitCards.transform.gameObject.transform.position.y + cardHeightOffset;
                 parentCardToMouse = true;
             }
         }
         if (parentCardToMouse == true && mouseCursor3d != null)
         {
-            cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, raycastHitCards.transform.position.y, mouseCursor3d.transform.position.z);
+            cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, heightOfCard, mouseCursor3d.transform.position.z);
         }
         if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
-        {            
+        {
+            if (cardToParentGameObject.tag == "card")
+            {
+                currentBankableID = 999;
+                cardToParentGameObject.transform.position = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].transform.position;
+            }
+            else if (cardToParentGameObject.tag == "bag")
+            {
+                currentBankableID = 999;
+                cardToParentGameObject.transform.position = bagSnapPoints[cardToParentGameObject.GetComponent<Bag>().bagID].transform.position;
+            }
             parentCardToMouse = false;
         }
         //parent card to point
@@ -64,8 +83,10 @@ public class CardSystem : MonoBehaviour
             }
             else
             {
-                bags[currentBankableID].bagSpace -= heldCard.GetComponent<Card>().cost;
+                //update the bag / delete card
+                bags[currentBankableID].bagSpace -= raycastHitCards.transform.GetComponent<Card>().cost;
                 bags[currentBankableID].cardsDeposited += 1;
+                Destroy(raycastHitCards.transform.gameObject);
             }            
         }
 
