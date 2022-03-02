@@ -19,7 +19,7 @@ public class CardSpawner : MonoBehaviour
     {
         if (cardSys.cards[cardSys.cards.Length - 1] == null)
         {
-            GameObject createdCard = Instantiate(cards[Random.Range(0, cardSys.cards.Length - 1)]);
+            GameObject createdCard = Instantiate(cards[Random.Range(0, cards.Length - 1)]);
             Card cardScript = createdCard.gameObject.GetComponent<Card>();
             cardScript.cost = Random.Range(randomMin, randomMax);
             cardSys.cards[cardSys.cards.Length - 1] = cardScript;
