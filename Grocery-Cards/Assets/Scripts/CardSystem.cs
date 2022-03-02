@@ -51,10 +51,12 @@ public class CardSystem : MonoBehaviour
                 parentCardToMouse = true;
             }
         }
+        //pick up card
         if (parentCardToMouse == true && mouseCursor3d != null)
         {
             cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, heightOfCard, mouseCursor3d.transform.position.z);
         }
+        //Release card
         if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
         {
             if (cardToParentGameObject.tag == "card")
