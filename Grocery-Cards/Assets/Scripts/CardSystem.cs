@@ -75,7 +75,7 @@ public class CardSystem : MonoBehaviour
             cards[currentCardID].transform.position = mouseCursor3d.transform.position;
         }
         //banking cards into bags
-        if (currentBankableID != 999 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag != "bag")
+        if (currentBankableID != 999 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag != "bag" && currentBankableID != 4)
         {
             if (bags[currentBankableID].bagSpace - cardToParentGameObject.GetComponent<Card>().cost < 0)
             {
@@ -89,6 +89,11 @@ public class CardSystem : MonoBehaviour
                 bags[currentBankableID].cardsDeposited += 1;
                 Destroy(cardToParentGameObject.transform.gameObject);
             }            
+        }
+        if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
+        {
+            //make bag connect to the satifaction system
+            Destroy(cardToParentGameObject.transform.gameObject);
         }
         //Release card
         if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
