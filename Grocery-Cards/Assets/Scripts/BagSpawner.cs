@@ -36,7 +36,6 @@ public class BagSpawner : MonoBehaviour
                 {
                     if (timeSinceBag[j] >= forceBag)
                     {
-                        Debug.Log("bag forced");
                         Destroy(createdCard.gameObject);
                         createdCard = Instantiate(bags[j]);
                         bagScript = createdCard.gameObject.GetComponent<Bag>();
