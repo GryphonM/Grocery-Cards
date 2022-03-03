@@ -7,8 +7,11 @@ public class BagSpawner : MonoBehaviour
     CardSystem cardSys;
     public int randomMin;
     public int randomMax;
+    public int forceBag;
     public GameObject[] bags;
     int lastBagGotten = 999;
+    int[] timeSinceBag = {0, 0, 0};
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,35 @@ public class BagSpawner : MonoBehaviour
                     Destroy(createdCard.gameObject);
                     createdCard = Instantiate(bags[Random.Range(0, bags.Length)]);
                     bagScript = createdCard.gameObject.GetComponent<Bag>();
+                }
+                for (int j = 0; j < timeSinceBag.Length; j++)
+                {
+                    if (timeSinceBag[j] >= forceBag)
+                    {
+                        Debug.Log("bag forced");
+                        Destroy(createdCard.gameObject);
+                        createdCard = Instantiate(bags[j]);
+                        bagScript = createdCard.gameObject.GetComponent<Bag>();
+                        timeSinceBag[j] = 0;
+                    }
+                }
+                if (bagScript.bagID == 0)
+                {
+                    timeSinceBag[0] = 0;
+                    timeSinceBag[1] += 1;
+                    timeSinceBag[2] += 1;
+                }
+                else if (bagScript.bagID == 1)
+                {
+                    timeSinceBag[0] += 1;
+                    timeSinceBag[1] = 0;
+                    timeSinceBag[2] += 1;
+                }
+                else if (bagScript.bagID == 2)
+                {
+                    timeSinceBag[0] += 1;
+                    timeSinceBag[1] += 1;
+                    timeSinceBag[2] = 0;
                 }
                 lastBagGotten = bagScript.bagID;
                 bagScript.bagID = i;
