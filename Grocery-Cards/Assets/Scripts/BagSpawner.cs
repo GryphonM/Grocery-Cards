@@ -22,6 +22,23 @@ public class BagSpawner : MonoBehaviour
     {
         for (int i = 0; i < cardSys.bags.Length; i++)
         {
+            if (cardSys.bags[i] == null)
+            {
+                GameObject createdCard = Instantiate(bags[i]);
+                Bag bagScript = createdCard.gameObject.GetComponent<Bag>();
+                bagScript.bagID = i;
+                bagScript.bagSpace = Random.Range(randomMin, randomMax);
+                cardSys.bags[i] = bagScript;
+                createdCard.transform.position = cardSys.bagSnapPoints[i].transform.position;
+            }
+        }
+    }
+}
+
+
+/*
+  for (int i = 0; i < cardSys.bags.Length; i++)
+        {
             if(cardSys.bags[i] == null)
             {                
                 GameObject createdCard = Instantiate(bags[Random.Range(0, bags.Length)]);               
@@ -68,4 +85,4 @@ public class BagSpawner : MonoBehaviour
             }
         }
     }
-}
+*/
