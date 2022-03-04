@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour
 {
     [SerializeField] Customer customer;
-    TextMeshProUGUI myText;
+    Image myImage;
     
     // Start is called before the first frame update
     void Start()
     {
-        myText = GetComponent<TextMeshProUGUI>();
+        myImage = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        myText.text = customer.Satisfaction.ToString();
+        myImage.fillAmount = Mathf.Lerp(0, 1, ((float)customer.Satisfaction) / ((float)customer.MaxSatisfaction));
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
+    public int MaxSatisfaction;
     public int Satisfaction;
     [SerializeField] int DepositIncrease;
     [SerializeField] float TimeLimit;
