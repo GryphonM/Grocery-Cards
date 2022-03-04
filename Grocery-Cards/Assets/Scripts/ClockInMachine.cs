@@ -11,11 +11,11 @@ public class ClockInMachine : MonoBehaviour
     [SerializeField] Vector3 FinalRotation;
     [SerializeField] float duration;
 
-    private void Start()
+    void Start()
     {
         camera = FindObjectOfType<Camera>().GetComponent<CameraMovement>();
     }
-    private void Update()
+    void Update()
     {
 
     }
@@ -23,8 +23,13 @@ public class ClockInMachine : MonoBehaviour
     {
         if (other.gameObject.tag == "Start" && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            camera.StartMoving(FinalPosition, FinalRotation, duration);
+            StartGame();
         }
+    }
+
+    public void StartGame()
+    {
+        camera.StartMoving(FinalPosition, FinalRotation, duration);
     }
     private void OnTriggerExit(Collider other)
     {

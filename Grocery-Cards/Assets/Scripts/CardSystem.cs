@@ -17,12 +17,11 @@ public class CardSystem : MonoBehaviour
     private int layerMask = 1 << 6;
     private GameObject cardToParentGameObject;
     private float heightOfCard;
-    private Customer activeCustomer;
+    public Customer activeCustomer;
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
-        activeCustomer = FindObjectOfType<Customer>();
         for (int i = 0; i < conveyorSnapPoints.Length; i++)
         {
             if(cards[i] != null)
@@ -52,7 +51,6 @@ public class CardSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         moveConvayerBelt();
         //getting a point at the mouse
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
