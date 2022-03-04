@@ -25,9 +25,13 @@ public class Card : MonoBehaviour
         }
         transform.position = targetPosition;
     }
+
+    public void startMoving()
+    {
+        StartCoroutine(LerpPosition(positionToMoveTo.transform.position, .5f));
+    }
     private void Start()
     {
-        StartCoroutine(LerpPosition(positionToMoveTo.transform.position, 5));
         if (transform.childCount > 0)
             transform.GetChild(0).GetComponent<TextMeshPro>().SetText(cost.ToString());
     }

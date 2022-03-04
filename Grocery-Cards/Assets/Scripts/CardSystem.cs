@@ -42,8 +42,10 @@ public class CardSystem : MonoBehaviour
             {
                 cards[i - 1] = cards[i];
                 cards[i] = null;
-                cards[i - 1].cardID = i - 1;
+                cards[i - 1].cardID = i - 1;                
                 //cards[i - 1].gameObject.transform.position = conveyorSnapPoints[i - 1].transform.position;   
+                cards[i - 1].GetComponent<Card>().positionToMoveTo = conveyorSnapPoints[i - 1].gameObject;
+                cards[i - 1].GetComponent<Card>().startMoving();
             }
         }
     }
@@ -111,6 +113,7 @@ public class CardSystem : MonoBehaviour
             {
                 currentBankableID = 999;
                 cardToParentGameObject.transform.position = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].transform.position;
+                cardToParentGameObject.GetComponent<Card>().positionToMoveTo = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].gameObject;
             }
             else if (cardToParentGameObject.tag == "bag")
             {
