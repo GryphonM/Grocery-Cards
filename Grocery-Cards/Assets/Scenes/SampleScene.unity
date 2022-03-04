@@ -1423,6 +1423,15 @@ MonoBehaviour:
   - {fileID: 1962065978674840444, guid: 095a06a5fe6ed7f4e895a50099d3ef61, type: 3}
   - {fileID: 314887130203054569, guid: 37ec2c7d2628c57448e2bf0e0851b5ac, type: 3}
   - {fileID: 7873296576206822981, guid: ce93c19eeaa1f974297570c80f3456d9, type: 3}
+  - {fileID: 7026744902425446151, guid: 34f680b14f087a04aaa4d7c1a44b5638, type: 3}
+  - {fileID: 3904980457388126316, guid: b83282a8dbbba1a498dbc135958ed9db, type: 3}
+  - {fileID: 7173592667289397664, guid: b5dd131d640d33a48b27a6e60a375575, type: 3}
+  - {fileID: 1892175132015754830, guid: ba4c55fdf0421ef40b76546aa6c097af, type: 3}
+  - {fileID: 6115532602434337699, guid: 3826cf16dd919c04b84c8f61efc2468b, type: 3}
+  - {fileID: 1320232410255312332, guid: 0f5eda3918ec0ba4d91b92a310ea85ea, type: 3}
+  - {fileID: 5058546235715045712, guid: a6ad1b199df0da6468205aa5d11eab35, type: 3}
+  - {fileID: 2982576299017996048, guid: f3c6a373feb4c82469dc1bd012f95b17, type: 3}
+  - {fileID: 6313581897099746859, guid: f75e9a556523bc54fa78ff16e841f9d9, type: 3}
   timeDelayBetweenCards: 1.75
   cardSpawnPoint: {fileID: 873467998}
 --- !u!114 &2009872614
