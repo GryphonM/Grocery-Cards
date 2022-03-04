@@ -30,8 +30,13 @@ public class Card : MonoBehaviour
     {
         StartCoroutine(LerpPosition(positionToMoveTo.transform.position, .5f));
     }
-    private void Start()
+    public void spawnMoving()
     {
+        positionToMoveTo = FindObjectOfType<CardSystem>().conveyorSnapPoints[FindObjectOfType<CardSystem>().conveyorSnapPoints.Length - 1].gameObject;
+        StartCoroutine(LerpPosition(positionToMoveTo.transform.position, .5f));
+    }
+    private void Start()
+    {        
         if (transform.childCount > 0)
             transform.GetChild(0).GetComponent<TextMeshPro>().SetText(cost.ToString());
     }

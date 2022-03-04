@@ -10,6 +10,7 @@ public class CardSpawner : MonoBehaviour
     public GameObject[] cards;
     float time_;
     public float timeDelayBetweenCards;
+    public GameObject cardSpawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class CardSpawner : MonoBehaviour
             Card cardScript = createdCard.gameObject.GetComponent<Card>();
             cardScript.cost = Random.Range(randomMin, randomMax);
             cardSys.cards[cardSys.cards.Length - 1] = cardScript;
-            createdCard.transform.position = cardSys.conveyorSnapPoints[cardSys.conveyorSnapPoints.Length - 1].transform.position;
+            createdCard.transform.position = cardSpawnPoint.transform.position;
             time_ = timeDelayBetweenCards;
         }
         else
