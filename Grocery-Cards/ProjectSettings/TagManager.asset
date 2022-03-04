@@ -6,6 +6,8 @@ TagManager:
   tags:
   - card
   - bag
+  - Start
+  - Quit
   layers:
   - Default
   - TransparentFX
