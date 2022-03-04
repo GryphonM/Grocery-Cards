@@ -28,6 +28,10 @@ public class Bag : MonoBehaviour
             {
                 cardSyst.currentBankableID = bagID;
             }
+            else
+            {
+                cardSyst.currentBankableID = 998;
+            }
         }
     }
     private void OnTriggerExit(Collider other)

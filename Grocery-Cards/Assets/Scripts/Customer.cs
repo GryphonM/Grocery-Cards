@@ -58,12 +58,12 @@ public class Customer : MonoBehaviour
         }
     }
 
-    void WrongItem(Card attemptedCard)
+    public void WrongItem(Card attemptedCard)
     {
         Satisfaction -= attemptedCard.cost;
     }
 
-    void BagDeposit(Bag depositedBag)
+    public void BagDeposit(Bag depositedBag)
     {
         int value = DepositIncrease - depositedBag.bagSpace;
         Satisfaction += value;

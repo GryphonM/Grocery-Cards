@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44792527, g: 0.49792403, b: 0.5754818, a: 1}
+  m_IndirectSpecularColor: {r: 0.4479249, g: 0.4979233, b: 0.57548046, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -216,10 +216,57 @@ PrefabInstance:
       propertyPath: customer
       value: 
       objectReference: {fileID: 392755178}
+    - target: {fileID: 1495715830, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495715830, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 371.21854
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495715830, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200540577004393769, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200540577004393772, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200540577004393775, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200540577004393775, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -426
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200540577004393775, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 241
+      objectReference: {fileID: 0}
     - target: {fileID: 9200540577988776297, guid: 52f26b0ceabb6be47b9ae3f364687a81,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200540577988776298, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 650941519}
+    - target: {fileID: 9200540577988776298, guid: 52f26b0ceabb6be47b9ae3f364687a81,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9200540577988776309, guid: 52f26b0ceabb6be47b9ae3f364687a81,
         type: 3}
@@ -833,8 +880,8 @@ Camera:
   m_GameObject: {fileID: 650941517}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.20784314, g: 0.20784314, b: 0.27450982, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1649,9 +1696,9 @@ MonoBehaviour:
   randomMax: 23
   forceBag: 3
   bags:
+  - {fileID: 3649373788112167615, guid: 414e73a1b067d3b4b891da7a557e664a, type: 3}
   - {fileID: 2760332731951558683, guid: d7c87f9f1853b8f42b2f6ee4ed7501db, type: 3}
   - {fileID: 9035328903589073970, guid: 03fde1fd775cea3479ff25b80d2ba009, type: 3}
-  - {fileID: 3649373788112167615, guid: 414e73a1b067d3b4b891da7a557e664a, type: 3}
 --- !u!4 &2055051157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3649373788112167614, guid: 414e73a1b067d3b4b891da7a557e664a,
