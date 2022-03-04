@@ -25,7 +25,7 @@ public class CardSpawner : MonoBehaviour
             Card cardScript = createdCard.gameObject.GetComponent<Card>();
             cardScript.cost = Random.Range(randomMin, randomMax);
             cardSys.cards[cardSys.cards.Length - 1] = cardScript;
-            createdCard.transform.position = cardSys.conveyorSnapPoints[cardSys.conveyorSnapPoints.Length - 1].transform.position;
+            //createdCard.transform.position = cardSys.conveyorSnapPoints[cardSys.conveyorSnapPoints.Length - 1].transform.position;
             time_ = timeDelayBetweenCards;
         }
         else

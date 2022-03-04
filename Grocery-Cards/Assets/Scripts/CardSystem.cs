@@ -18,6 +18,7 @@ public class CardSystem : MonoBehaviour
     private GameObject cardToParentGameObject;
     private float heightOfCard;
     private Customer activeCustomer;
+    float time = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +44,15 @@ public class CardSystem : MonoBehaviour
                 cards[i - 1] = cards[i];
                 cards[i] = null;
                 cards[i - 1].cardID = i - 1;
-                cards[i - 1].gameObject.transform.position = conveyorSnapPoints[i - 1].transform.position;
+                //cards[i - 1].gameObject.transform.position = conveyorSnapPoints[i - 1].transform.position;
+                cards[i - 1].gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, conveyorSnapPoints[i - 1].transform.position, time);
             }
         }
     }
     // Update is called once per frame
     void Update()
     {
+        
         moveConvayerBelt();
         //getting a point at the mouse
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
