@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
+    [Tooltip("Maximum Satisfaction to Be Shown on UI")]
     public int MaxSatisfaction;
+    [Tooltip("Current/Starting Satisfaction Level")]
     public int Satisfaction;
+    [Tooltip("Satisfaction Increase on Full Deposited Bag.\nNon-empty bag increases Satisfaction by this amount - leftover space")]
     [SerializeField] int DepositIncrease;
+    [Space(10)]
+    [Tooltip("Time before satisfaction goes down over time")]
     [SerializeField] float TimeLimit;
+    [Tooltip("Time between time-based decreases of Satisfaction")]
     [SerializeField] float TimeLimitDelay;
+    [Tooltip("Amount subtracted from Satisfaction after Time Limit Delay")]
     [SerializeField] int RatingDecrease;
+    [Space(10)]
+    [Tooltip("Maximum Cards on the conveyor belt before Time Decrease kicks in")]
     [SerializeField] int MaxCards;
+    [Tooltip("Amount subtracted from Time Limit Delay there are Max Cards")]
     [SerializeField] float MaxCardTimeDecrease;
 
     float maxDelayTime;
@@ -22,7 +32,7 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType<Timer>();
+        timer = FindObjectOfType<Timer>(true);
         cards = FindObjectOfType<CardSystem>();
         maxDelayTime = TimeLimitDelay;
         delayTimer = 0;

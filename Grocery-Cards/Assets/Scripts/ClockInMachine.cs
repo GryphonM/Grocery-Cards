@@ -8,6 +8,10 @@ public class ClockInMachine : MonoBehaviour
     [HideInInspector] public int bagID = 4; // set bag id equal to its index in the bags array in CardSystem.cs
     CameraMovement mainCamera;
     MenuCards menuCardController;
+    enum Action {Start, Quit, Null};
+    Action currentAction = Action.Null;
+    [SerializeField] GameObject gameUI;
+    [Space(10)]
     [SerializeField] Vector3 StartPosition;
     [SerializeField] Vector3 StartRotation;
     [SerializeField] float duration;
@@ -19,27 +23,45 @@ public class ClockInMachine : MonoBehaviour
     }
     void Update()
     {
-        if (menuCardController.onClockIn && Input.GetKeyUp(KeyCode.Mouse0))
-            StartGame();
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            switch(currentAction)
+            {
+                case Action.Start:
+                    StartGame();
+                    break;
+                case Action.Quit:
+                    Debug.Log("Quit Game");
+                    Application.Quit();
+                    break;
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Start")
+        switch (other.gameObject.tag)
         {
-            menuCardController.onClockIn = true;
+            case "Start":
+                currentAction = Action.Start;
+                break;
+            case "Quit":
+                currentAction = Action.Quit;
+                break;
+            default:
+                currentAction = Action.Null;
+                break;
         }
     }
 
     public void StartGame()
     {
         mainCamera.StartMoving(StartPosition, StartRotation, duration);
-        menuCardController.ReturnCard();
+        gameUI.SetActive(true);
         GameManager.paused = false;
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        menuCardController.onClockIn = false;
+        currentAction = Action.Null;
     }
 }
