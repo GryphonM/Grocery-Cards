@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Vector3 FinalPosition;
-    public Vector3 FinalRotation;
-    public float durationOfMovement;
+    float lifetime = 0;
+    bool normalize = false;
+    [HideInInspector] public bool bob = false;
+    public bool isCustomer = false;
+    public float bobStrength = 1;
+    public float bobSpeed = 1;
+    float startY;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        startY = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    StartMoving(FinalPosition, FinalRotation, durationOfMovement);
-        //}
+        if (bob)
+        {
+            lifetime += Time.deltaTime;
+            transform.position = new Vector3(this.transform.position.x, startY + (Mathf.Sin(lifetime * bobSpeed) * bobStrength), this.transform.position.z);
+        }
+        if (normalize)
+        {
+            Vector3 newPos = transform.position;
+            newPos.y -= bobSpeed * Time.deltaTime;
+            if (newPos.y <= 0)
+            {
+                newPos.y = 0;
+                normalize = false;
+            }
+            transform.position = newPos;
+        }
     }
 
     public void StartMoving(Vector3 finalPosition, Vector3 finalRotation, float duration, bool destroyOnEnd = false)
     {
-        if (transform.childCount > 0 && transform.GetChild(0).GetComponent<Animator>() != null)
-            transform.GetChild(0).GetComponent<Animator>().SetBool("Walking", true);
+        if (isCustomer)
+            bob = true;
         StartCoroutine(LerpPosition(finalPosition, finalRotation, duration, destroyOnEnd));
     }
 
@@ -36,14 +53,22 @@ public class CameraMovement : MonoBehaviour
         Vector3 startRotation = transform.rotation.eulerAngles;
         while (time < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            Vector3 newPos = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            if (bob)
+                newPos.y = transform.position.y;
+            transform.position = newPos;
             transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRotation), Quaternion.Euler(targetRotation), time / duration);
             time += Time.deltaTime;
             yield return null;
         }
+        if (bob)
+        {
+            targetPosition.y = transform.position.y;
+            normalize = true;
+        }
         transform.SetPositionAndRotation(targetPosition, Quaternion.Euler(targetRotation));
-        if (transform.childCount > 0 && transform.GetChild(0).GetComponent<Animator>() != null)
-            transform.GetChild(0).GetComponent<Animator>().SetBool("Walking", false);
+        if (isCustomer)
+            bob = false;
         if (destroyOnEnd)
             Destroy(gameObject);
     }

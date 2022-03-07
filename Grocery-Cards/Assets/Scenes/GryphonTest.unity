@@ -123,6 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &81825536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9035328903589073970, guid: 03fde1fd775cea3479ff25b80d2ba009,
+    type: 3}
+  m_PrefabInstance: {fileID: 9035328903979658155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &81825537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81825536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed009261d7ca30b4a84ab731d8d9c910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips: []
+  output: {fileID: 0}
+  minPitch: 0.75
+  maxPitch: 1.25
 --- !u!1 &110850626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,9 +1215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fe86b9e358eda488538643b5953144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FinalPosition: {x: 0.41, y: 14.02, z: -2.53}
-  FinalRotation: {x: 71.7, y: 0, z: 0}
-  durationOfMovement: 0.25
+  bob: 0
+  isCustomer: 0
+  bobStrength: 1
+  bobSpeed: 1
 --- !u!1 &676249466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,7 +2291,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 9035328903979658155}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 81825536}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c7f167e75f63e747884985e27867274, type: 3}
@@ -2871,6 +2894,11 @@ PrefabInstance:
     - target: {fileID: 9035328903589073974, guid: 03fde1fd775cea3479ff25b80d2ba009,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035328903928553851, guid: 03fde1fd775cea3479ff25b80d2ba009,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

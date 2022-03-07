@@ -8,6 +8,7 @@ public class MoveUpAndDown : MonoBehaviour
     float time_ = 0;
     public bool move = true;
     public float strength = 1;
+    public float speed = 1;
     float oldY;
     void Start()
     {
@@ -20,7 +21,7 @@ public class MoveUpAndDown : MonoBehaviour
         if(move == true)
         {
             time_ += Time.deltaTime;
-            this.transform.position = new Vector3(this.transform.position.x, oldY + (Mathf.Sin(time_) * strength), this.transform.position.z);
+            this.transform.position = new Vector3(this.transform.position.x, oldY + (Mathf.Sin(time_ * speed) * strength), this.transform.position.z);
         }
     }
 }
