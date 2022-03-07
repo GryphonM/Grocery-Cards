@@ -22,18 +22,24 @@ public class Customer : MonoBehaviour
     [SerializeField] int MaxCards;
     [Tooltip("Amount subtracted from Time Limit Delay there are Max Cards")]
     [SerializeField] float MaxCardTimeDecrease;
+    [Space(10)]
+    [Tooltip("Number of cards before end of Customer")]
+    public int totalCards;
+    /*[HideInInspector]*/ public int cardCount;
 
     float maxDelayTime;
     float delayTimer;
 
     Timer timer;
     CardSystem cards;
+    CustomerSpawner custSpawn;
     
     // Start is called before the first frame update
     void Start()
     {
         timer = FindObjectOfType<Timer>(true);
         cards = FindObjectOfType<CardSystem>();
+        custSpawn = FindObjectOfType<CustomerSpawner>();
         maxDelayTime = TimeLimitDelay;
         delayTimer = 0;
     }
@@ -79,6 +85,10 @@ public class Customer : MonoBehaviour
     public void BagDeposit(Bag depositedBag)
     {
         int value = DepositIncrease - depositedBag.bagSpace;
+        if (custSpawn.allCards)
+            value = depositedBag.bagSpace;
         Satisfaction += value;
+        if (Satisfaction > MaxSatisfaction)
+            Satisfaction = MaxSatisfaction;
     }
 }

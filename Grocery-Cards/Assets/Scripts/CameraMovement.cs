@@ -16,18 +16,20 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartMoving(FinalPosition, FinalRotation, durationOfMovement);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    StartMoving(FinalPosition, FinalRotation, durationOfMovement);
+        //}
     }
 
-    public void StartMoving(Vector3 finalPosition, Vector3 finalRotation, float duration)
+    public void StartMoving(Vector3 finalPosition, Vector3 finalRotation, float duration, bool destroyOnEnd = false)
     {
-        StartCoroutine(LerpPosition(finalPosition, finalRotation, duration));
+        if (transform.childCount > 0 && transform.GetChild(0).GetComponent<Animator>() != null)
+            transform.GetChild(0).GetComponent<Animator>().SetBool("Walking", true);
+        StartCoroutine(LerpPosition(finalPosition, finalRotation, duration, destroyOnEnd));
     }
 
-    IEnumerator LerpPosition(Vector3 targetPosition, Vector3 targetRotation, float duration)
+    IEnumerator LerpPosition(Vector3 targetPosition, Vector3 targetRotation, float duration, bool destroyOnEnd = false)
     {
         float time = 0;
         Vector3 startPosition = transform.position;
@@ -40,5 +42,9 @@ public class CameraMovement : MonoBehaviour
             yield return null;
         }
         transform.SetPositionAndRotation(targetPosition, Quaternion.Euler(targetRotation));
+        if (transform.childCount > 0 && transform.GetChild(0).GetComponent<Animator>() != null)
+            transform.GetChild(0).GetComponent<Animator>().SetBool("Walking", false);
+        if (destroyOnEnd)
+            Destroy(gameObject);
     }
 }

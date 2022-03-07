@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardSpawner : MonoBehaviour
 {
     CardSystem cardSys;
+    CustomerSpawner custSpawn;
     public int randomMin;
     public int randomMax;
     public GameObject[] cards;
@@ -15,12 +16,13 @@ public class CardSpawner : MonoBehaviour
     void Start()
     {
         cardSys = FindObjectOfType<CardSystem>();
+        custSpawn = FindObjectOfType<CustomerSpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.paused)
+        if (!GameManager.paused && !custSpawn.allCards)
         {
             if (cardSys.cards[cardSys.cards.Length - 1] == null && time_ <= 0)
             {

@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCursor3d: {fileID: 680796930}
-  onClockIn: 0
 --- !u!4 &271328682
 Transform:
   m_ObjectHideFlags: 0
@@ -261,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 528457541, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
       propertyPath: customer
       value: 
-      objectReference: {fileID: 392755178}
+      objectReference: {fileID: 0}
     - target: {fileID: 1495715830, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -456,57 +455,6 @@ Transform:
   m_Father: {fileID: 1784972308}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &392755177
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 392755179}
-  - component: {fileID: 392755178}
-  m_Layer: 0
-  m_Name: Customer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &392755178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392755177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e953c829e37517409729d8248b38382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxSatisfaction: 50
-  Satisfaction: 50
-  DepositIncrease: 10
-  TimeLimit: 2
-  TimeLimitDelay: 1
-  RatingDecrease: 0
-  MaxCards: 5
-  MaxCardTimeDecrease: 0.5
---- !u!4 &392755179
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392755177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426776276
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &429564486
 AudioSource:
@@ -593,7 +541,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2cbef170fe33f5d45ba92357bc844da4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1147,7 +1095,7 @@ Transform:
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &650941517
 GameObject:
@@ -1227,7 +1175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650941517}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.41, y: 14.02, z: -2.53}
+  m_LocalPosition: {x: 0, y: 14.02, z: -2.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1342,7 +1290,7 @@ Transform:
   m_LocalScale: {x: 10.57026, y: 16.51604, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &680796930
 GameObject:
@@ -1703,7 +1651,7 @@ Transform:
   m_LocalScale: {x: 7.9227, y: 5.9420247, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1091694729
 GameObject:
@@ -1799,8 +1747,70 @@ Transform:
   m_LocalScale: {x: 38.2, y: 21.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &1097891616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097891617}
+  - component: {fileID: 1097891618}
+  m_Layer: 0
+  m_Name: CustomerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1097891617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097891616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097891618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097891616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81ac8334c919de4eac7ee34ba37b9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPos: {x: -20, y: 0, z: 0}
+  EnterTime: 5
+  FinalPos: {x: 21, y: 0, z: 0}
+  LeaveTime: 5
+  NPCMaterials:
+  - {fileID: 2100000, guid: ab6634410dc20f2468b641ed282b8b98, type: 2}
+  - {fileID: 2100000, guid: 1c69b27761f6d314aa4e34601c84a13a, type: 2}
+  - {fileID: 2100000, guid: 50c655158060aae4fa979494674583ae, type: 2}
+  - {fileID: 2100000, guid: 4b7c1bd9849c00d40b444058229d30e9, type: 2}
+  - {fileID: 2100000, guid: 6c2e4ea2d003782449403a93f59fb71d, type: 2}
+  Customers:
+  - {fileID: 8830301883009082246, guid: 7e227a694316e504ea18079fdc88bead, type: 3}
+  - {fileID: 2792813369789104149, guid: 94d5e7b522b12ae41bfce60a82d75c4d, type: 3}
+  - {fileID: 3139820338742263465, guid: 996be1bb29d5b1043bae4f33a1ff1f60, type: 3}
+  - {fileID: 2446809494720848837, guid: 310cd7e4281e2b64a800f41ad8a2a891, type: 3}
+  - {fileID: 8548403370834680557, guid: 2ce1f02c209ca5440a323dd206dd5e93, type: 3}
+  currentCustomerScript: {fileID: 0}
+  betweenCustomers: 0
+  allCards: 0
 --- !u!1 &1118645307 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9200540577988776297, guid: 52f26b0ceabb6be47b9ae3f364687a81,
@@ -2424,7 +2434,7 @@ MonoBehaviour:
   currentBankableID: 999
   currentCardID: 999
   mouseCursor3d: {fileID: 1837766739}
-  activeCustomer: {fileID: 392755178}
+  customer: {fileID: 0}
 --- !u!4 &2009872612
 Transform:
   m_ObjectHideFlags: 0
@@ -2754,7 +2764,7 @@ Transform:
   m_LocalScale: {x: 7.9227, y: 5.9420247, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &4468763087618988942
 MonoBehaviour:
