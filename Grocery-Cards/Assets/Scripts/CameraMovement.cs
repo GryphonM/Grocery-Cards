@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
 
     public void StartMoving(Vector3 finalPosition, Vector3 finalRotation, float duration)
     {
-        StartCoroutine(LerpPosition(finalPosition, finalRotation, durationOfMovement));
+        StartCoroutine(LerpPosition(finalPosition, finalRotation, duration));
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, Vector3 targetRotation, float duration)

@@ -31,30 +31,33 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        delayTimer += Time.deltaTime;
+        if (!GameManager.paused)
+        {
+            delayTimer += Time.deltaTime;
 
-        if (cards.cards.Length > MaxCards)
-        {
-            maxDelayTime = TimeLimitDelay - MaxCardTimeDecrease;
-        }
-        else
-        {
-            maxDelayTime = TimeLimitDelay;
-        }
-
-        if (timer.time >= TimeLimit)
-        {
-            if (delayTimer >= maxDelayTime)
+            if (cards.cards.Length > MaxCards)
             {
-                Satisfaction -= RatingDecrease;
-                delayTimer = 0;
+                maxDelayTime = TimeLimitDelay - MaxCardTimeDecrease;
             }
-        }
+            else
+            {
+                maxDelayTime = TimeLimitDelay;
+            }
 
-        if (Satisfaction <= 0)
-        {
-            // end the game
-            Debug.Log("You're fired");
+            if (timer.time >= TimeLimit)
+            {
+                if (delayTimer >= maxDelayTime)
+                {
+                    Satisfaction -= RatingDecrease;
+                    delayTimer = 0;
+                }
+            }
+
+            if (Satisfaction <= 0)
+            {
+                // end the game
+                Debug.Log("You're fired");
+            }
         }
     }
 

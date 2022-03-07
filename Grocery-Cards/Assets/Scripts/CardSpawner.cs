@@ -20,16 +20,19 @@ public class CardSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cardSys.cards[cardSys.cards.Length - 1] == null && time_ <= 0)
+        if (!GameManager.paused)
         {
-            GameObject createdCard = Instantiate(cards[Random.Range(0, cards.Length - 1)]);
-            Card cardScript = createdCard.gameObject.GetComponent<Card>();
-            cardScript.cost = Random.Range(randomMin, randomMax);
-            cardSys.cards[cardSys.cards.Length - 1] = cardScript;
-            createdCard.transform.position = cardSpawnPoint.transform.position;
-            time_ = timeDelayBetweenCards;
+            if (cardSys.cards[cardSys.cards.Length - 1] == null && time_ <= 0)
+            {
+                GameObject createdCard = Instantiate(cards[Random.Range(0, cards.Length - 1)]);
+                Card cardScript = createdCard.gameObject.GetComponent<Card>();
+                cardScript.cost = Random.Range(randomMin, randomMax);
+                cardSys.cards[cardSys.cards.Length - 1] = cardScript;
+                createdCard.transform.position = cardSpawnPoint.transform.position;
+                time_ = timeDelayBetweenCards;
+            }
+            else
+                time_ -= Time.deltaTime;
         }
-        else
-            time_ -= Time.deltaTime;
     }
 }

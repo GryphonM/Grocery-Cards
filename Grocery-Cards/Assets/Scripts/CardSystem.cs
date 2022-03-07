@@ -51,74 +51,77 @@ public class CardSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveConvayerBelt();
-        //getting a point at the mouse
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, ~layerMask))
+        if (!GameManager.paused)
         {
-            mouseCursor3d.transform.position = raycastHit.point;           
-        }        
-        if (Physics.Raycast(ray, out RaycastHit raycastHitCards, Mathf.Infinity, layerMask))
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && parentCardToMouse != true)
-            {                
-                cardToParentGameObject = raycastHitCards.transform.gameObject;
-                heightOfCard = raycastHitCards.transform.gameObject.transform.position.y + cardHeightOffset;
-                parentCardToMouse = true;
-            }
-        }
-        //pick up card
-        if (parentCardToMouse == true && mouseCursor3d != null)
-        {
-            cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, heightOfCard, mouseCursor3d.transform.position.z);
-        }
-        //parent card to point
-        if (parentCardToMouse == true && currentCardID != 999)
-        {
-            cards[currentCardID].transform.position = mouseCursor3d.transform.position;
-        }
-        //banking cards into bags
-        if (currentBankableID != 999 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag != "bag" && currentBankableID != 4)
-        {
-            if (currentBankableID == 998)
+            moveConvayerBelt();
+            //getting a point at the mouse
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, ~layerMask))
             {
-                Debug.Log("Wrong Card");
-                activeCustomer.WrongItem(cardToParentGameObject.GetComponent<Card>());
+                mouseCursor3d.transform.position = raycastHit.point;
             }
-            else if (bags[currentBankableID].bagSpace - cardToParentGameObject.GetComponent<Card>().cost < 0)
+            if (Physics.Raycast(ray, out RaycastHit raycastHitCards, Mathf.Infinity, layerMask))
             {
-                //make void the bag
-                Debug.Log("Bag Void");
+                if (Input.GetKeyDown(KeyCode.Mouse0) && parentCardToMouse != true)
+                {
+                    cardToParentGameObject = raycastHitCards.transform.gameObject;
+                    heightOfCard = raycastHitCards.transform.gameObject.transform.position.y + cardHeightOffset;
+                    parentCardToMouse = true;
+                }
             }
-            else
+            //pick up card
+            if (parentCardToMouse == true && mouseCursor3d != null)
             {
-                //update the bag / delete card
-                bags[currentBankableID].bagSpace -= cardToParentGameObject.GetComponent<Card>().cost;
-                bags[currentBankableID].cardsDeposited += 1;
+                cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, heightOfCard, mouseCursor3d.transform.position.z);
+            }
+            //parent card to point
+            if (parentCardToMouse == true && currentCardID != 999)
+            {
+                cards[currentCardID].transform.position = mouseCursor3d.transform.position;
+            }
+            //banking cards into bags
+            if (currentBankableID != 999 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag != "bag" && currentBankableID != 4)
+            {
+                if (currentBankableID == 998)
+                {
+                    Debug.Log("Wrong Card");
+                    activeCustomer.WrongItem(cardToParentGameObject.GetComponent<Card>());
+                }
+                else if (bags[currentBankableID].bagSpace - cardToParentGameObject.GetComponent<Card>().cost < 0)
+                {
+                    //make void the bag
+                    Debug.Log("Bag Void");
+                }
+                else
+                {
+                    //update the bag / delete card
+                    bags[currentBankableID].bagSpace -= cardToParentGameObject.GetComponent<Card>().cost;
+                    bags[currentBankableID].cardsDeposited += 1;
+                    Destroy(cardToParentGameObject.transform.gameObject);
+                }
+            }
+            if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
+            {
+                //make bag connect to the satifaction system
+                activeCustomer.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
                 Destroy(cardToParentGameObject.transform.gameObject);
-            }           
-        }
-        if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
-        {
-            //make bag connect to the satifaction system
-            activeCustomer.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
-            Destroy(cardToParentGameObject.transform.gameObject);
-        }
-        //Release card
-        if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
-        {
-            if (cardToParentGameObject.tag == "card")
-            {
-                currentBankableID = 999;
-                cardToParentGameObject.transform.position = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].transform.position;
-                cardToParentGameObject.GetComponent<Card>().positionToMoveTo = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].gameObject;
             }
-            else if (cardToParentGameObject.tag == "bag")
+            //Release card
+            if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
             {
-                currentBankableID = 999;
-                cardToParentGameObject.transform.position = bagSnapPoints[cardToParentGameObject.GetComponent<Bag>().bagID].transform.position;
+                if (cardToParentGameObject.tag == "card")
+                {
+                    currentBankableID = 999;
+                    cardToParentGameObject.transform.position = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].transform.position;
+                    cardToParentGameObject.GetComponent<Card>().positionToMoveTo = conveyorSnapPoints[cardToParentGameObject.GetComponent<Card>().cardID].gameObject;
+                }
+                else if (cardToParentGameObject.tag == "bag")
+                {
+                    currentBankableID = 999;
+                    cardToParentGameObject.transform.position = bagSnapPoints[cardToParentGameObject.GetComponent<Bag>().bagID].transform.position;
+                }
+                parentCardToMouse = false;
             }
-            parentCardToMouse = false;
         }
     }
 }
