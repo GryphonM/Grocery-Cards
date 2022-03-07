@@ -85,7 +85,7 @@ public class Customer : MonoBehaviour
     public void BagDeposit(Bag depositedBag)
     {
         int value = DepositIncrease - depositedBag.bagSpace;
-        if (custSpawn.allCards)
+        if (custSpawn.cardsDone)
             value = depositedBag.bagSpace;
         Satisfaction += value;
         if (Satisfaction > MaxSatisfaction)

@@ -156,7 +156,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3649373789011327619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.02}
   m_LocalScale: {x: 0.16071427, y: 0.21428567, z: 0.25}
   m_Children: []
   m_Father: {fileID: 3649373788112167614}
@@ -206,7 +206,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3649373789011327617
 MonoBehaviour:

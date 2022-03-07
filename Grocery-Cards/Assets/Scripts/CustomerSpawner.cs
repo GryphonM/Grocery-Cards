@@ -15,13 +15,14 @@ public class CustomerSpawner : MonoBehaviour
     GameObject currentCustomer;
     [HideInInspector] public Customer currentCustomerScript;
 
-    [HideInInspector] public bool betweenCustomers;
+    [HideInInspector] public bool betweenCustomers = true;
     [HideInInspector] public bool allCards;
+    [HideInInspector] public bool cardsDone;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        betweenCustomers = true;
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class CustomerSpawner : MonoBehaviour
             // Get Number of Cards in Play
             int cardNumber = GameObject.FindGameObjectsWithTag("card").Length;
             // New Customer
-            if (currentCustomer == null)
+            if (currentCustomer == null && betweenCustomers)
             {
                 currentCustomer = Instantiate(Customers[customerIndex].gameObject);
                 currentCustomer.transform.position = SpawnPos;
@@ -41,6 +42,7 @@ public class CustomerSpawner : MonoBehaviour
                 currentCustomerScript = currentCustomer.GetComponent<Customer>();
                 betweenCustomers = false;
                 allCards = false;
+                cardsDone = false;
             }
             else if (currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
             {
@@ -48,6 +50,8 @@ public class CustomerSpawner : MonoBehaviour
                 if (cardNumber == 0)
                 {
                     bool bagsLeft = false;
+                    cardsDone = true;
+                    currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
                     foreach (Bag bag in FindObjectsOfType<Bag>())
                     {
                         if (bag.cardsDeposited > 0)
@@ -56,7 +60,6 @@ public class CustomerSpawner : MonoBehaviour
                     if (!bagsLeft)
                     {
                         betweenCustomers = true;
-                        currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
                     }
                 }
             }

@@ -100,6 +100,7 @@ MonoBehaviour:
   cost: 2
   cardType: 1
   cardID: 5
+  positionToMoveTo: {fileID: 0}
 --- !u!64 &314887130203054570
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5270444840124656021
 MonoBehaviour:
