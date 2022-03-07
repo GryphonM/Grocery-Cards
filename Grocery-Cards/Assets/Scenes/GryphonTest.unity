@@ -1811,6 +1811,7 @@ MonoBehaviour:
   currentCustomerScript: {fileID: 0}
   betweenCustomers: 0
   allCards: 0
+  cardsDone: 0
 --- !u!1 &1118645307 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9200540577988776297, guid: 52f26b0ceabb6be47b9ae3f364687a81,
