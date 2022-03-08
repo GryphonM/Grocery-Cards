@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ScoreDisplay : MonoBehaviour
 {
     CustomerSpawner custSpawn;
+    public float ammountToFill;
     Image myImage;
     
     // Start is called before the first frame update
@@ -18,6 +19,8 @@ public class ScoreDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myImage.fillAmount = Mathf.Lerp(0, 1, ((float)custSpawn.currentCustomerScript.Satisfaction) / ((float)custSpawn.currentCustomerScript.MaxSatisfaction));
+        ammountToFill = Mathf.Lerp(0, 1, ((float)custSpawn.currentCustomerScript.Satisfaction) / ((float)custSpawn.currentCustomerScript.MaxSatisfaction));
+        myImage.fillAmount = ammountToFill;
+        //myImage.fillAmount = Mathf.Lerp(0, 1, ((float)custSpawn.currentCustomerScript.Satisfaction) / ((float)custSpawn.currentCustomerScript.MaxSatisfaction));
     }
 }

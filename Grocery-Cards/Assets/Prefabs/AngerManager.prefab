@@ -631,4 +631,5 @@ MonoBehaviour:
   emote4: {fileID: 7610894076599236130}
   emote5: {fileID: 7610894076975981958}
   emote6: {fileID: 7610894077059037793}
+  score: {fileID: 0}
   satisfaction: 1

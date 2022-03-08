@@ -11,6 +11,7 @@ public class Emote : MonoBehaviour
     public GameObject emote4;
     public GameObject emote5;
     public GameObject emote6;
+    public ScoreDisplay score;
     int emote;
     public float satisfaction;
     public void disableEmotes()
@@ -30,6 +31,7 @@ public class Emote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        satisfaction = score.ammountToFill;
         if (satisfaction >= .83f)
         {
             emote = 1;
