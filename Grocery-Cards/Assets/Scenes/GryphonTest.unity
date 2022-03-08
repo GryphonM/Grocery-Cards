@@ -1807,6 +1807,10 @@ MonoBehaviour:
   EnterTime: 5
   FinalPos: {x: 21, y: 0, z: 0}
   LeaveTime: 5
+  LookUpCameraPos: {x: 0.41, y: 6, z: -2.53}
+  LookUpCameraRot: {x: 0, y: 0, z: 0}
+  CameraEndTime: 0.25
+  Manager: {fileID: 7787018388403452354, guid: 8402e4960c2cd8c42b7fbc439b5a4414, type: 3}
   NPCMaterials:
   - {fileID: 2100000, guid: ab6634410dc20f2468b641ed282b8b98, type: 2}
   - {fileID: 2100000, guid: 1c69b27761f6d314aa4e34601c84a13a, type: 2}
