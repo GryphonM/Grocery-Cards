@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 //banking cards
 public class CardSystem : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class CardSystem : MonoBehaviour
     private float heightOfCard;
     private CustomerSpawner customerSpawn;
     public Customer customer;
+    [SerializeField] int upQueue = 3001;
+    [SerializeField] int upOrder = 1;
+    int normalQueue;
+    int normalOrder;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +73,8 @@ public class CardSystem : MonoBehaviour
                 {
                     cardToParentGameObject = raycastHitCards.transform.gameObject;
                     heightOfCard = raycastHitCards.transform.gameObject.transform.position.y + cardHeightOffset;
+                    normalQueue = cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue;
+                    normalOrder = cardToParentGameObject.GetComponentInChildren<TextMeshPro>().sortingOrder;
                     parentCardToMouse = true;
                 }
             }
@@ -75,6 +82,8 @@ public class CardSystem : MonoBehaviour
             if (parentCardToMouse == true && mouseCursor3d != null)
             {
                 cardToParentGameObject.transform.position = new Vector3(mouseCursor3d.transform.position.x, heightOfCard, mouseCursor3d.transform.position.z);
+                cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue = upQueue;
+                cardToParentGameObject.GetComponentInChildren<TextMeshPro>().sortingOrder = upOrder;
             }
             //parent card to point
             if (parentCardToMouse == true && currentCardID != 999)
@@ -124,6 +133,8 @@ public class CardSystem : MonoBehaviour
                     cardToParentGameObject.transform.position = bagSnapPoints[cardToParentGameObject.GetComponent<Bag>().bagID].transform.position;
                 }
                 parentCardToMouse = false;
+                cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue = normalQueue;
+                cardToParentGameObject.GetComponentInChildren<TextMeshPro>().sortingOrder = normalOrder;
             }
         }
     }
