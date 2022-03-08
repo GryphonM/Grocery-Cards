@@ -2447,6 +2447,8 @@ MonoBehaviour:
   currentCardID: 999
   mouseCursor3d: {fileID: 1837766739}
   customer: {fileID: 0}
+  upQueue: 5000
+  upOrder: 2
 --- !u!4 &2009872612
 Transform:
   m_ObjectHideFlags: 0
@@ -2829,6 +2831,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColdBag
       objectReference: {fileID: 0}
+    - target: {fileID: 9035328903589073970, guid: 03fde1fd775cea3479ff25b80d2ba009,
+        type: 3}
+      propertyPath: m_TagString
+      value: bag
+      objectReference: {fileID: 0}
     - target: {fileID: 9035328903589073973, guid: 03fde1fd775cea3479ff25b80d2ba009,
         type: 3}
       propertyPath: bagSpace
@@ -2887,6 +2894,26 @@ PrefabInstance:
     - target: {fileID: 9035328903589073974, guid: 03fde1fd775cea3479ff25b80d2ba009,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035328903928553828, guid: 03fde1fd775cea3479ff25b80d2ba009,
+        type: 3}
+      propertyPath: m_margin.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035328903928553828, guid: 03fde1fd775cea3479ff25b80d2ba009,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035328903928553829, guid: 03fde1fd775cea3479ff25b80d2ba009,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035328903928553829, guid: 03fde1fd775cea3479ff25b80d2ba009,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9035328903928553851, guid: 03fde1fd775cea3479ff25b80d2ba009,

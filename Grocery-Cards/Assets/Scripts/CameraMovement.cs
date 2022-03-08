@@ -30,6 +30,7 @@ public class CameraMovement : MonoBehaviour
         {
             Vector3 newPos = transform.position;
             newPos.y -= bobSpeed * Time.deltaTime;
+
             if (newPos.y <= 0)
             {
                 newPos.y = 0;
