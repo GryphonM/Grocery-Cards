@@ -48,7 +48,7 @@ public class Emote : MonoBehaviour
         {
             emote = 4;
         }
-        else if (satisfaction >= .15f)
+        else if (satisfaction >= .23f)
         {
             emote = 5;
         }

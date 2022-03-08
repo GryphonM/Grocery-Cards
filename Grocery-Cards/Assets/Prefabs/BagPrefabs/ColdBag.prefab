@@ -114,6 +114,7 @@ MonoBehaviour:
   bagSpace: 100
   bagType: 1
   cardsDeposited: 0
+  fullBag: {fileID: 2100000, guid: a6db065339eb29d41823df196d3fa48a, type: 2}
 --- !u!54 &9035328903589073972
 Rigidbody:
   m_ObjectHideFlags: 0
