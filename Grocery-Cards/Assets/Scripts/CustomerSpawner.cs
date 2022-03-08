@@ -26,6 +26,7 @@ public class CustomerSpawner : MonoBehaviour
     [HideInInspector] public bool betweenCustomers = true;
     [HideInInspector] public bool allCards;
     [HideInInspector] public bool cardsDone;
+    [HideInInspector] public bool fired;
     bool spawnManager = true;
     
     // Start is called before the first frame update
@@ -81,6 +82,7 @@ public class CustomerSpawner : MonoBehaviour
                 allCards = true;
                 cardsDone = true;
                 GameManager.paused = true;
+                fired = true;
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
                 camera.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
                 GameObject manager = Instantiate(Manager);

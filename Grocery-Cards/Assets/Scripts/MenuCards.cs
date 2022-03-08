@@ -9,17 +9,19 @@ public class MenuCards : MonoBehaviour
     [SerializeField] GameObject mouseCursor3d;
     bool parentCardToMouse = false;
     GameObject cardToParentGameObject;
+    CustomerSpawner custSpawn;
     
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
+        custSpawn = FindObjectOfType<CustomerSpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.paused)
+        if (GameManager.paused && !custSpawn.fired)
         {
             //getting a point at the mouse
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);

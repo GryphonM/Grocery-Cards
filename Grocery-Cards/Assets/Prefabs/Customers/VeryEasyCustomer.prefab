@@ -53,6 +53,9 @@ MonoBehaviour:
   RatingDecrease: 0
   MaxCards: 5
   MaxCardTimeDecrease: 2
+  CardSpawn: 1.75
+  minTotalCards: 45
+  maxTotalCards: 55
   totalCards: 50
   cardCount: 0
 --- !u!114 &8830301883009082247

@@ -18,7 +18,7 @@ public class CardSystem : MonoBehaviour
     private int layerMask = 1 << 6;
     private GameObject cardToParentGameObject;
     private float heightOfCard;
-    private CustomerSpawner customerSpawn;
+    private CustomerSpawner custSpawn;
     public Customer customer;
     [SerializeField] int upQueue = 3001;
     [SerializeField] int upOrder = 1;
@@ -28,7 +28,7 @@ public class CardSystem : MonoBehaviour
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
-        customerSpawn = FindObjectOfType<CustomerSpawner>();
+        custSpawn = FindObjectOfType<CustomerSpawner>();
         for (int i = 0; i < conveyorSnapPoints.Length; i++)
         {
             if(cards[i] != null)
@@ -58,7 +58,7 @@ public class CardSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.paused && !customerSpawn.betweenCustomers)
+        if (!GameManager.paused && !custSpawn.betweenCustomers)
         {
             moveConvayerBelt();
             //getting a point at the mouse
@@ -96,7 +96,7 @@ public class CardSystem : MonoBehaviour
                 if (currentBankableID == 998)
                 {
                     Debug.Log("Wrong Card");
-                    customerSpawn.currentCustomerScript.WrongItem(cardToParentGameObject.GetComponent<Card>());
+                    custSpawn.currentCustomerScript.WrongItem(cardToParentGameObject.GetComponent<Card>());
                 }
                 else if (bags[currentBankableID].bagSpace - cardToParentGameObject.GetComponent<Card>().cost < 0)
                 {
@@ -108,14 +108,14 @@ public class CardSystem : MonoBehaviour
                     //update the bag / delete card
                     bags[currentBankableID].bagSpace -= cardToParentGameObject.GetComponent<Card>().cost;
                     bags[currentBankableID].cardsDeposited += 1;
-                    customerSpawn.currentCustomerScript.cardCount++;
+                    custSpawn.currentCustomerScript.cardCount++;
                     Destroy(cardToParentGameObject.transform.gameObject);
                 }
             }
             if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
             {
                 //make bag connect to the satifaction system
-                customerSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
+                custSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
                 Destroy(cardToParentGameObject.transform.gameObject);
             }
             //Release card
