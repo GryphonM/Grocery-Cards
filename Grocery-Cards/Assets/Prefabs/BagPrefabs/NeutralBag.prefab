@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dd20c7aac2dd79c4fae335141f3475f0, type: 2}
+  - {fileID: 2100000, guid: 4faf6b45fdee8734cb9346a5c6ffe547, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   bagSpace: 100
   bagType: 0
   cardsDeposited: 0
+  fullBag: {fileID: 2100000, guid: b61b6593cba893c42ae19ae1eab477c4, type: 2}
 --- !u!54 &2760332731951558673
 Rigidbody:
   m_ObjectHideFlags: 0

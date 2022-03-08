@@ -10,6 +10,7 @@ public class Bag : MonoBehaviour
     public int bagType;
     public int cardsDeposited;
     private CardSystem cardSyst;
+    public Material fullBag;
 
     private void Start()
     {
@@ -19,6 +20,10 @@ public class Bag : MonoBehaviour
     {
         if (transform.childCount > 0)
             transform.GetChild(0).GetComponent<TextMeshPro>().SetText(bagSpace.ToString());
+        if (cardsDeposited != 0 && fullBag != null)
+            this.GetComponent<Renderer>().material = fullBag;
+
+        
     }
     private void OnTriggerStay(Collider other)
     {
