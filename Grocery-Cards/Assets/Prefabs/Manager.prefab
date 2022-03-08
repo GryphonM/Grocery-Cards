@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7787018388403452367}
-  - component: {fileID: 7787018388403452364}
   - component: {fileID: 7787018388403452365}
   m_Layer: 0
   m_Name: Manager
@@ -33,28 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7787018388403452364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7787018388403452354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e953c829e37517409729d8248b38382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxSatisfaction: 50
-  Satisfaction: 50
-  DepositIncrease: 10
-  TimeLimit: 15
-  TimeLimitDelay: 5
-  RatingDecrease: 0
-  MaxCards: 5
-  MaxCardTimeDecrease: 2
-  totalCards: 50
-  cardCount: 0
 --- !u!114 &7787018388403452365
 MonoBehaviour:
   m_ObjectHideFlags: 0

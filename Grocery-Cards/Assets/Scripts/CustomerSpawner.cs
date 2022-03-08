@@ -81,6 +81,7 @@ public class CustomerSpawner : MonoBehaviour
             {
                 allCards = true;
                 cardsDone = true;
+                GameManager.paused = true;
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
                 camera.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
                 GameObject manager = Instantiate(Manager);
