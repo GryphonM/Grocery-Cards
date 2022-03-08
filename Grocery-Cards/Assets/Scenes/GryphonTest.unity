@@ -1807,7 +1807,7 @@ MonoBehaviour:
   EnterTime: 5
   FinalPos: {x: 21, y: 0, z: 0}
   LeaveTime: 5
-  LookUpCameraPos: {x: 0.41, y: 6, z: -2.53}
+  LookUpCameraPos: {x: 0.41, y: 6, z: -4}
   LookUpCameraRot: {x: 0, y: 0, z: 0}
   CameraEndTime: 0.25
   Manager: {fileID: 7787018388403452354, guid: 8402e4960c2cd8c42b7fbc439b5a4414, type: 3}
@@ -1816,7 +1816,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1c69b27761f6d314aa4e34601c84a13a, type: 2}
   - {fileID: 2100000, guid: 50c655158060aae4fa979494674583ae, type: 2}
   - {fileID: 2100000, guid: 4b7c1bd9849c00d40b444058229d30e9, type: 2}
-  - {fileID: 2100000, guid: 6c2e4ea2d003782449403a93f59fb71d, type: 2}
   Customers:
   - {fileID: 8830301883009082246, guid: 7e227a694316e504ea18079fdc88bead, type: 3}
   - {fileID: 2792813369789104149, guid: 94d5e7b522b12ae41bfce60a82d75c4d, type: 3}

@@ -48,9 +48,11 @@ public class CustomerSpawner : MonoBehaviour
             {
                 currentCustomer = Instantiate(Customers[customerIndex].gameObject);
                 currentCustomer.transform.position = SpawnPos;
-                currentCustomer.transform.GetChild(0).GetComponent<MeshRenderer>().material = NPCMaterials[Random.Range(0, 5)];
+                currentCustomer.transform.GetChild(0).GetComponent<MeshRenderer>().material = NPCMaterials[Random.Range(0, NPCMaterials.Length)];
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(Vector3.zero, Vector3.zero, EnterTime);
                 currentCustomerScript = currentCustomer.GetComponent<Customer>();
+                currentCustomerScript.totalCards = Random.Range(currentCustomerScript.minTotalCards, currentCustomerScript.maxTotalCards);
+                FindObjectOfType<CardSpawner>().timeDelayBetweenCards = currentCustomerScript.CardSpawn;
                 betweenCustomers = false;
                 allCards = false;
                 cardsDone = false;

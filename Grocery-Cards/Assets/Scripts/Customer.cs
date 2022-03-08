@@ -23,8 +23,14 @@ public class Customer : MonoBehaviour
     [Tooltip("Amount subtracted from Time Limit Delay there are Max Cards")]
     [SerializeField] float MaxCardTimeDecrease;
     [Space(10)]
-    [Tooltip("Number of cards before end of Customer")]
-    public int totalCards;
+    [Tooltip("Card Spawning Rate")]
+    public float CardSpawn = 1.75f;
+    [Space(10)]
+    [Tooltip("Minimum Number of cards before end of Customer")]
+    public int minTotalCards;
+    [Tooltip("Maximum Number of cards before end of Customer")]
+    public int maxTotalCards;
+    /*[HideInInspector]*/ public int totalCards;
     /*[HideInInspector]*/ public int cardCount;
 
     float maxDelayTime;
