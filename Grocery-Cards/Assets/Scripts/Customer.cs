@@ -68,12 +68,6 @@ public class Customer : MonoBehaviour
                     delayTimer = 0;
                 }
             }
-
-            if (Satisfaction <= 0)
-            {
-                // end the game
-                Debug.Log("You're fired");
-            }
         }
     }
 

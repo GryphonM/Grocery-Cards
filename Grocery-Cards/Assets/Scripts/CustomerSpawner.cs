@@ -6,8 +6,16 @@ public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField] Vector3 SpawnPos;
     [SerializeField] float EnterTime;
+    [Space(10)]
     [SerializeField] Vector3 FinalPos;
     [SerializeField] float LeaveTime;
+    [Space(10)]
+    [SerializeField] Vector3 LookUpCameraPos;
+    [SerializeField] Vector3 LookUpCameraRot;
+    [SerializeField] float CameraEndTime;
+    [SerializeField] GameObject Manager;
+    GameObject camera;
+    [Space(10)]
     [SerializeField] Material[] NPCMaterials;
     [Tooltip("Goes From Easiest Customer to Hardest Customer")]
     [SerializeField] Customer[] Customers;
@@ -18,11 +26,13 @@ public class CustomerSpawner : MonoBehaviour
     [HideInInspector] public bool betweenCustomers = true;
     [HideInInspector] public bool allCards;
     [HideInInspector] public bool cardsDone;
+    bool spawnManager = true;
     
     // Start is called before the first frame update
     void Start()
     {
         betweenCustomers = true;
+        camera = FindObjectOfType<Camera>().gameObject;
     }
 
     // Update is called once per frame
@@ -32,6 +42,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             // Get Number of Cards in Play
             int cardNumber = GameObject.FindGameObjectsWithTag("card").Length;
+            Debug.Log(betweenCustomers);
             // New Customer
             if (currentCustomer == null && betweenCustomers)
             {
@@ -62,6 +73,18 @@ public class CustomerSpawner : MonoBehaviour
                         betweenCustomers = true;
                     }
                 }
+            }
+
+            if (currentCustomerScript.Satisfaction <= 0 && spawnManager)
+            {
+                allCards = true;
+                cardsDone = true;
+                currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
+                camera.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
+                GameObject manager = Instantiate(Manager);
+                manager.transform.position = SpawnPos;
+                manager.GetComponent<CameraMovement>().StartMoving(Vector3.zero, Vector3.zero, EnterTime);
+                spawnManager = false;
             }
         }
     }
