@@ -42,7 +42,6 @@ public class CustomerSpawner : MonoBehaviour
         {
             // Get Number of Cards in Play
             int cardNumber = GameObject.FindGameObjectsWithTag("card").Length;
-            Debug.Log(betweenCustomers);
             // New Customer
             if (currentCustomer == null && betweenCustomers)
             {
