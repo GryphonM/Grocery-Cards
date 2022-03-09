@@ -116,7 +116,10 @@ public class CardSystem : MonoBehaviour
             {
                 //make bag connect to the satifaction system
                 custSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
-                Destroy(cardToParentGameObject.transform.gameObject);
+                Debug.Log(cardToParentGameObject.name);
+                cardToParentGameObject.GetComponent<CameraMovement>().StartMovingBetter(new Vector3(cardToParentGameObject.transform.position.x + 10, cardToParentGameObject.transform.position.y, cardToParentGameObject.transform.position.z), cardToParentGameObject.transform.rotation, .5f, true);
+                bags[cardToParentGameObject.GetComponent<Bag>().bagID] = null;
+                //Destroy(cardToParentGameObject.transform.gameObject);
             }
             //Release card
             if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)

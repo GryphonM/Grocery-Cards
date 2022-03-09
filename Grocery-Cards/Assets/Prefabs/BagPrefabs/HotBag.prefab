@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3649373788112167602}
   - component: {fileID: 3649373788112167613}
   - component: {fileID: 3649373788112167601}
+  - component: {fileID: 1154880877480226653}
   m_Layer: 6
   m_Name: HotBag
   m_TagString: bag
@@ -131,6 +132,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1154880877480226653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649373788112167615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fe86b9e358eda488538643b5953144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bob: 0
+  isCustomer: 0
+  bobStrength: 1
+  bobSpeed: 1
 --- !u!1 &3649373789011327619
 GameObject:
   m_ObjectHideFlags: 0

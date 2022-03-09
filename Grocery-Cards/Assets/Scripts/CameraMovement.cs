@@ -52,6 +52,17 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    public void StartMovingBetter(Vector3 finalPosition, Quaternion finalRotation, float duration, bool destroyOnEnd = false)
+    {
+        if (isCustomer)
+            bob = true;
+        if (!inCoroutine)
+        {
+            StartCoroutine(LerpPositionBetter(finalPosition, finalRotation, duration, destroyOnEnd));
+            inCoroutine = true;
+        }
+    }
+
     IEnumerator LerpPosition(Vector3 targetPosition, Vector3 targetRotation, float duration, bool destroyOnEnd = false)
     {
         float time = 0;
@@ -73,6 +84,34 @@ public class CameraMovement : MonoBehaviour
             normalize = true;
         }
         transform.SetPositionAndRotation(targetPosition, Quaternion.Euler(targetRotation));
+        inCoroutine = false;
+        if (isCustomer)
+            bob = false;
+        if (destroyOnEnd)
+            Destroy(gameObject);
+    }
+
+    IEnumerator LerpPositionBetter(Vector3 targetPosition, Quaternion targetRotation, float duration, bool destroyOnEnd = false)
+    {
+        float time = 0;
+        Vector3 startPosition = transform.position;
+        Vector3 startRotation = transform.rotation.eulerAngles;
+        while (time < duration)
+        {
+            Vector3 newPos = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            if (bob)
+                newPos.y = transform.position.y;
+            transform.position = newPos;
+            transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRotation), targetRotation, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        if (bob)
+        {
+            targetPosition.y = transform.position.y;
+            normalize = true;
+        }
+        transform.SetPositionAndRotation(targetPosition, targetRotation);
         inCoroutine = false;
         if (isCustomer)
             bob = false;
