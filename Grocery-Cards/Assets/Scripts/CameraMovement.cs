@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     public float bobStrength = 1;
     public float bobSpeed = 1;
     float startY;
+    bool inCoroutine;
     
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,11 @@ public class CameraMovement : MonoBehaviour
     {
         if (isCustomer)
             bob = true;
-        StartCoroutine(LerpPosition(finalPosition, finalRotation, duration, destroyOnEnd));
+        if (!inCoroutine)
+        {
+            StartCoroutine(LerpPosition(finalPosition, finalRotation, duration, destroyOnEnd));
+            inCoroutine = true;
+        }
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, Vector3 targetRotation, float duration, bool destroyOnEnd = false)
@@ -68,6 +73,7 @@ public class CameraMovement : MonoBehaviour
             normalize = true;
         }
         transform.SetPositionAndRotation(targetPosition, Quaternion.Euler(targetRotation));
+        inCoroutine = false;
         if (isCustomer)
             bob = false;
         if (destroyOnEnd)

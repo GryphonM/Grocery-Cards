@@ -57,7 +57,7 @@ public class CustomerSpawner : MonoBehaviour
                 allCards = false;
                 cardsDone = false;
             }
-            else if (currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
+            else if (currentCustomer != null && currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
             {
                 allCards = true;
                 if (cardNumber == 0)
