@@ -21,9 +21,6 @@ public class VolumeControl : MonoBehaviour
     void Update()
     {
         control.audioMixer.SetFloat("Volume", Mathf.Lerp(minVolume, maxVolume, slider.value));
-        float volume;
-        control.audioMixer.GetFloat("Volume", out volume);
-        Debug.Log(volume);
         if (slider.value == 0)
             control.audioMixer.SetFloat("Volume", -80);
     }
