@@ -42,7 +42,7 @@ public class CustomerSpawner : MonoBehaviour
         if (!GameManager.paused)
         {
             // Get Number of Cards in Play
-            int cardNumber = GameObject.FindGameObjectsWithTag("card").Length;
+            int cardNumber = GameObject.FindGameObjectsWithTag("card").Length - 1;
             // New Customer
             if (currentCustomer == null && betweenCustomers)
             {
@@ -73,6 +73,9 @@ public class CustomerSpawner : MonoBehaviour
                     if (!bagsLeft)
                     {
                         betweenCustomers = true;
+                        customerIndex++;
+                        if (customerIndex >= Customers.Length)
+                            customerIndex = Customers.Length - 1;
                     }
                 }
             }
