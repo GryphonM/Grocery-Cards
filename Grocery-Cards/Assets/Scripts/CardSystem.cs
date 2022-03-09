@@ -24,11 +24,13 @@ public class CardSystem : MonoBehaviour
     [SerializeField] int upOrder = 1;
     int normalQueue;
     int normalOrder;
+    AudioClips myClips;
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
         custSpawn = FindObjectOfType<CustomerSpawner>();
+        myClips = GetComponent<AudioClips>();
         for (int i = 0; i < conveyorSnapPoints.Length; i++)
         {
             if(cards[i] != null)
@@ -72,6 +74,8 @@ public class CardSystem : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse0) && parentCardToMouse != true)
                 {
                     cardToParentGameObject = raycastHitCards.transform.gameObject;
+                    cardToParentGameObject.GetComponent<RandomContainer>().clips = myClips.cardPickupClips;
+                    cardToParentGameObject.GetComponent<RandomContainer>().PlaySound(false);
                     heightOfCard = raycastHitCards.transform.gameObject.transform.position.y + cardHeightOffset;
                     normalQueue = cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue;
                     normalOrder = cardToParentGameObject.GetComponentInChildren<TextMeshPro>().sortingOrder;
@@ -104,19 +108,26 @@ public class CardSystem : MonoBehaviour
                 else
                 {
                     //update the bag / delete card
+                    cardToParentGameObject.GetComponent<RandomContainer>().clips = myClips.cardDepositClips;
+                    cardToParentGameObject.GetComponent<RandomContainer>().PlaySound(false);
                     bags[currentBankableID].bagSpace -= cardToParentGameObject.GetComponent<Card>().cost;
                     bags[currentBankableID].cardsDeposited += 1;
                     custSpawn.currentCustomerScript.cardCount++;
                     cardToParentGameObject.GetComponent<Shrink>().shrink = true;
                     cards[cardToParentGameObject.GetComponent<Card>().cardID] = null;
+                    Destroy(cardToParentGameObject.GetComponent<MeshCollider>());
                     cardToParentGameObject = null;
                     parentCardToMouse = false;
+                    currentBankableID = 999;
+                    currentCardID = 999;
                 }
             }
             if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
             {
                 //make bag connect to the satifaction system
                 custSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
+                cardToParentGameObject.GetComponent<RandomContainer>().clips = myClips.bagDepositClips;
+                cardToParentGameObject.GetComponent<RandomContainer>().PlaySound(false);
                 cardToParentGameObject.GetComponent<CameraMovement>().StartMovingBetter(new Vector3(cardToParentGameObject.transform.position.x + 10, cardToParentGameObject.transform.position.y, cardToParentGameObject.transform.position.z), cardToParentGameObject.transform.rotation, .25f, true);
                 bags[cardToParentGameObject.GetComponent<Bag>().bagID] = null;
                 //Destroy(cardToParentGameObject.transform.gameObject);

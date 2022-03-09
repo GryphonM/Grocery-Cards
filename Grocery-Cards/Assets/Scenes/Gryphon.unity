@@ -6646,6 +6646,7 @@ GameObject:
   - component: {fileID: 2009872611}
   - component: {fileID: 2009872613}
   - component: {fileID: 2009872614}
+  - component: {fileID: 2009872615}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -6761,6 +6762,25 @@ MonoBehaviour:
   - {fileID: 3649373788112167615, guid: 414e73a1b067d3b4b891da7a557e664a, type: 3}
   - {fileID: 2760332731951558683, guid: d7c87f9f1853b8f42b2f6ee4ed7501db, type: 3}
   - {fileID: 9035328903589073970, guid: 03fde1fd775cea3479ff25b80d2ba009, type: 3}
+--- !u!114 &2009872615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009872610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ea2119a62936d4fb8c2061102e3818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPickupClips:
+  - {fileID: 8300000, guid: e9a0921830735354bbfcbcea76e5fc6a, type: 3}
+  cardDepositClips:
+  - {fileID: 8300000, guid: 6963b3b8d8afa0848a09f38c8f4cdc25, type: 3}
+  bagDepositClips:
+  - {fileID: 8300000, guid: 6afbeb863518f77448903014407b2704, type: 3}
+  smallTalkClips: []
 --- !u!1 &2041430296
 GameObject:
   m_ObjectHideFlags: 0
