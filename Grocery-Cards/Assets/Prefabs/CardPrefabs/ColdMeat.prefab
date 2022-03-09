@@ -316,3 +316,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrink: 0
+  duration: 1

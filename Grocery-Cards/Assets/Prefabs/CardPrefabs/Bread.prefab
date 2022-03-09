@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrink: 0
+  duration: 1
 --- !u!1 &7473220390164744960
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,13 +95,11 @@ public class CardSystem : MonoBehaviour
             {
                 if (currentBankableID == 998)
                 {
-                    Debug.Log("Wrong Card");
                     custSpawn.currentCustomerScript.WrongItem(cardToParentGameObject.GetComponent<Card>());
                 }
                 else if (bags[currentBankableID].bagSpace - cardToParentGameObject.GetComponent<Card>().cost < 0)
                 {
                     //make void the bag
-                    Debug.Log("Bag Void");
                 }
                 else
                 {
@@ -109,15 +107,17 @@ public class CardSystem : MonoBehaviour
                     bags[currentBankableID].bagSpace -= cardToParentGameObject.GetComponent<Card>().cost;
                     bags[currentBankableID].cardsDeposited += 1;
                     custSpawn.currentCustomerScript.cardCount++;
-                    Destroy(cardToParentGameObject.transform.gameObject);
+                    cardToParentGameObject.GetComponent<Shrink>().shrink = true;
+                    cards[cardToParentGameObject.GetComponent<Card>().cardID] = null;
+                    cardToParentGameObject = null;
+                    parentCardToMouse = false;
                 }
             }
             if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
             {
                 //make bag connect to the satifaction system
                 custSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
-                Debug.Log(cardToParentGameObject.name);
-                cardToParentGameObject.GetComponent<CameraMovement>().StartMovingBetter(new Vector3(cardToParentGameObject.transform.position.x + 10, cardToParentGameObject.transform.position.y, cardToParentGameObject.transform.position.z), cardToParentGameObject.transform.rotation, .5f, true);
+                cardToParentGameObject.GetComponent<CameraMovement>().StartMovingBetter(new Vector3(cardToParentGameObject.transform.position.x + 10, cardToParentGameObject.transform.position.y, cardToParentGameObject.transform.position.z), cardToParentGameObject.transform.rotation, .25f, true);
                 bags[cardToParentGameObject.GetComponent<Bag>().bagID] = null;
                 //Destroy(cardToParentGameObject.transform.gameObject);
             }
