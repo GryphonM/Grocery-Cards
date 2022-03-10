@@ -56,6 +56,7 @@ AudioMixerController:
     - 6e2460f52ffa9294384f8c2adf32f98e
     - 4ff14ab9ef5035a4d902716ecf1f139f
     - 41a48c78ddef5464aa10a021e74f97ee
+    - 0486c2fe93fec9c4a9db7d9dd2a8be1e
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -71,6 +72,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -3622434903315256766}
   - {fileID: 9012582408140564891}
+  - {fileID: 1746867619101220418}
   m_Volume: 1cfa8548838c23f4eb53b9e8be4a0bc3
   m_Pitch: bf96f9b76563b144e921733dc07e1b16
   m_Send: 00000000000000000000000000000000
@@ -108,6 +110,39 @@ AudioMixerSnapshotController:
     1cfa8548838c23f4eb53b9e8be4a0bc3: 0
     e4076c0cc3e2a774f80c57fe2aa39c68: -0.08374855
   m_TransitionOverrides: {}
+--- !u!244 &376374371312195937
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1991881f7df0f784cbfb6bbeecb78fd3
+  m_EffectName: Attenuation
+  m_MixLevel: 9ccb75697bccc5d46867aa6c193d43d1
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &1746867619101220418
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dialgoue
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 0486c2fe93fec9c4a9db7d9dd2a8be1e
+  m_Children: []
+  m_Volume: e5276658626f1394e834e2a9add6fbd5
+  m_Pitch: 755d94bda467ad941836974327ac1123
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 376374371312195937}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &8473092474670682029
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

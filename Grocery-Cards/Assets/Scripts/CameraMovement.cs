@@ -10,8 +10,8 @@ public class CameraMovement : MonoBehaviour
     public bool isCustomer = false;
     public float bobStrength = 1;
     public float bobSpeed = 1;
-    float startY;
-    bool inCoroutine;
+    [HideInInspector] public float startY;
+    [HideInInspector] public bool inCoroutine = false;
     
     // Start is called before the first frame update
     void Start()
