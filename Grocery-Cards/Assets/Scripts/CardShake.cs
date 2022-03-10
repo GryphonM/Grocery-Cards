@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardShake : MonoBehaviour
 {
     public bool shake = false;
-    float strength = 1;
+    float strength = 4f;
     float time = 0;
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,8 @@ public class CardShake : MonoBehaviour
         if (shake == true)
         {
             time += Time.deltaTime;
-            float newRot = this.transform.rotation.z + (Mathf.Sin(time) * strength);
-            this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, newRot, this.transform.rotation.w);
+            float newRot = this.transform.rotation.z + Mathf.Sin(time * strength);
+            this.transform.rotation = Quaternion.Euler(new Vector3(90.3f, 0, newRot));
         }
     }
 }

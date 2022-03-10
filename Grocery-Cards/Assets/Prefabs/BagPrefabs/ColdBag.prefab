@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6796162923296252714}
   - component: {fileID: 6995909421603759758}
   - component: {fileID: 3968044119026904443}
+  - component: {fileID: 1205617620860186272}
   m_Layer: 6
   m_Name: ColdBag
   m_TagString: bag
@@ -264,6 +265,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1205617620860186272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035328903589073970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0eece4a9700d554d8e9dc5b8e8f26cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shake: 0
 --- !u!1 &9035328903928553830
 GameObject:
   m_ObjectHideFlags: 0

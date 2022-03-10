@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1154880877480226653}
   - component: {fileID: 7122744742531918644}
   - component: {fileID: 8681139691319452015}
+  - component: {fileID: -9034524557034900381}
   m_Layer: 6
   m_Name: HotBag
   m_TagString: bag
@@ -264,6 +265,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-9034524557034900381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649373788112167615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0eece4a9700d554d8e9dc5b8e8f26cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shake: 0
 --- !u!1 &3649373789011327619
 GameObject:
   m_ObjectHideFlags: 0
