@@ -17,12 +17,14 @@ public class CustomerSpawner : MonoBehaviour
     GameObject gameCam;
     [Space(10)]
     [SerializeField] Material[] NPCMaterials;
+    int lastMaterial = -1;
     [Tooltip("Goes From Easiest Customer to Hardest Customer")]
     [SerializeField] Customer[] Customers;
     int customerIndex = 0;
     GameObject currentCustomer;
     [HideInInspector] public Customer currentCustomerScript;
     CardSystem cardSyst;
+    Timer gameTimer;
 
     [HideInInspector] public bool betweenCustomers = true;
     [HideInInspector] public bool allCards;
@@ -37,6 +39,7 @@ public class CustomerSpawner : MonoBehaviour
         betweenCustomers = true;
         gameCam = FindObjectOfType<Camera>().gameObject;
         cardSyst = FindObjectOfType<CardSystem>();
+        gameTimer = FindObjectOfType<Timer>(true);
     }
 
     // Update is called once per frame
@@ -56,11 +59,16 @@ public class CustomerSpawner : MonoBehaviour
             {
                 currentCustomer = Instantiate(Customers[customerIndex].gameObject);
                 currentCustomer.transform.position = SpawnPos;
-                currentCustomer.transform.GetChild(0).GetComponent<MeshRenderer>().material = NPCMaterials[Random.Range(0, NPCMaterials.Length)];
+                int material;
+                do
+                    material = Random.Range(0, NPCMaterials.Length);
+                while (material == lastMaterial);
+                currentCustomer.transform.GetChild(0).GetComponent<MeshRenderer>().material = NPCMaterials[material];
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(Vector3.zero, Vector3.zero, EnterTime);
                 currentCustomerScript = currentCustomer.GetComponent<Customer>();
                 currentCustomerScript.totalCards = Random.Range(currentCustomerScript.minTotalCards, currentCustomerScript.maxTotalCards);
                 FindObjectOfType<CardSpawner>().timeDelayBetweenCards = currentCustomerScript.CardSpawn;
+                gameTimer.time = 0;
                 betweenCustomers = false;
                 allCards = false;
                 cardsDone = false;

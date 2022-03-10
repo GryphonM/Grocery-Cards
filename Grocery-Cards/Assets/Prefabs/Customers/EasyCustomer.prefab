@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2792813369580504901}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.9, z: 7.5}
+  m_LocalPosition: {x: 0, y: 5.5, z: 7.5}
   m_LocalScale: {x: 10.496, y: 10.496, z: 1}
   m_Children: []
   m_Father: {fileID: 2792813369789104150}
@@ -126,17 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953c829e37517409729d8248b38382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSatisfaction: 50
-  Satisfaction: 50
-  DepositIncrease: 10
-  TimeLimit: 30
-  TimeLimitDelay: 5
-  RatingDecrease: 1
+  MaxSatisfaction: 30
+  Satisfaction: 30
+  DepositIncrease: 5
+  TimeLimit: 20
+  TimeLimitDelay: 6.5
+  RatingDecrease: 2
   MaxCards: 5
-  MaxCardTimeDecrease: 2
-  CardSpawn: 1.75
-  minTotalCards: 45
-  maxTotalCards: 55
+  MaxCardTimeDecrease: 1
+  CardSpawn: 1.25
+  minTotalCards: 20
+  maxTotalCards: 40
   totalCards: 50
   cardCount: 0
 --- !u!114 &2792813369789104148

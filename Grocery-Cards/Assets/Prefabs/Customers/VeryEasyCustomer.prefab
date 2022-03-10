@@ -45,17 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953c829e37517409729d8248b38382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSatisfaction: 50
-  Satisfaction: 50
+  MaxSatisfaction: 30
+  Satisfaction: 30
   DepositIncrease: 10
-  TimeLimit: 15
-  TimeLimitDelay: 5
-  RatingDecrease: 0
+  TimeLimit: 35
+  TimeLimitDelay: 9
+  RatingDecrease: 1
   MaxCards: 5
-  MaxCardTimeDecrease: 2
-  CardSpawn: 1.75
-  minTotalCards: 45
-  maxTotalCards: 55
+  MaxCardTimeDecrease: 0.5
+  CardSpawn: 1.5
+  minTotalCards: 15
+  maxTotalCards: 35
   totalCards: 50
   cardCount: 0
 --- !u!114 &8830301883009082247
@@ -85,8 +85,6 @@ GameObject:
   - component: {fileID: 8830301883136156881}
   - component: {fileID: 8830301883136156882}
   - component: {fileID: 8830301883136156884}
-  - component: {fileID: 8830301883136156880}
-  - component: {fileID: 4682996899046367004}
   m_Layer: 0
   m_Name: CustomerSprite
   m_TagString: Untagged
@@ -157,37 +155,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &8830301883136156880
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8830301883136156886}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a91e0fd8bdb9ee440ac1a5f4f47e1acd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4682996899046367004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8830301883136156886}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367eb082a0107ca448ea989d3ae3aa30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: 0
-  strength: 0.5
-  speed: 3
