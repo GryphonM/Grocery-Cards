@@ -32,6 +32,10 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] float blackoutTime;
     [SerializeField] GameObject StoreLeave;
     [Space(10)]
+    [SerializeField] AudioClip loseClip;
+    [SerializeField] AudioClip winClip;
+    RandomContainer myAudio;
+    [Space(10)]
     [SerializeField] Material[] NPCMaterials;
     int lastMaterial = -1;
     [Tooltip("Goes From Easiest Customer to Hardest Customer")]
@@ -59,6 +63,7 @@ public class CustomerSpawner : MonoBehaviour
         cardSyst = FindObjectOfType<CardSystem>();
         gameTimer = FindObjectOfType<Timer>(true);
         manager = Manager;
+        myAudio = GetComponent<RandomContainer>();
     }
 
     // Update is called once per frame
@@ -119,6 +124,8 @@ public class CustomerSpawner : MonoBehaviour
                             customerIndex = Customers.Length - 1;
                             gameWon = true;
                             gameCam.GetComponent<CameraMovement>().StartMoving(WinLookUpPos, WinLookUpRot, WinLookUpTime);
+                            myAudio.clips[0] = winClip;
+                            myAudio.PlaySound(false);
                             GameManager.paused = true;
                         }
                     }
@@ -132,6 +139,8 @@ public class CustomerSpawner : MonoBehaviour
                 GameManager.paused = true;
                 fired = true;
                 GameObject.FindGameObjectWithTag("Jukebox").GetComponent<AudioSource>().Stop();
+                myAudio.clips[0] = loseClip;
+                myAudio.PlaySound(false);
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
                 gameCam.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
                 manager = Instantiate(Manager);

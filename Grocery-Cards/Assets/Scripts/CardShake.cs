@@ -20,7 +20,7 @@ public class CardShake : MonoBehaviour
         {
             time += Time.deltaTime;
             float newRot = this.transform.rotation.z + Mathf.Sin(time * strength);
-            this.transform.rotation = Quaternion.Euler(new Vector3(90.3f, 0, newRot));
+            this.transform.rotation = Quaternion.Euler(new Vector3(90.4f, 0, newRot));
         }
     }
 }
