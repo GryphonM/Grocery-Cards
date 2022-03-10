@@ -88,11 +88,14 @@ public class Customer : MonoBehaviour
     public void WrongItem(Card attemptedCard)
     {
         Satisfaction -= attemptedCard.cost;
+        GetComponent<RandomContainer>().PlaySound(true);
     }
 
     public void BagDeposit(Bag depositedBag)
     {
         int value = DepositIncrease - depositedBag.bagSpace;
+        if (value <= 0)
+            GetComponent<RandomContainer>().PlaySound(true);
         if (custSpawn.cardsDone)
             value = depositedBag.bagSpace;
         Satisfaction += value;

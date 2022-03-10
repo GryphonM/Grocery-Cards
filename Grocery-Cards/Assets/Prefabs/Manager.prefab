@@ -65,10 +65,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: fddf303da47118f419b182d686c0c6e8, type: 3}
+  - {fileID: 8300000, guid: 0b467f744f7cb1046ad0a1eabdcf37f6, type: 3}
+  - {fileID: 8300000, guid: 4f12da0b3bcc66946bd3d86c09fef168, type: 3}
+  - {fileID: 8300000, guid: e7e441084a1638b40b0bb238f8b45485, type: 3}
   output: {fileID: 1746867619101220418, guid: ab295c7d1f1dd454bb1aebb7d35f4d78, type: 2}
-  minPitch: 0.75
-  maxPitch: 1.25
+  minPitch: 1
+  maxPitch: 1
 --- !u!82 &-923188770086861441
 AudioSource:
   m_ObjectHideFlags: 0

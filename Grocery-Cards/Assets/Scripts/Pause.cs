@@ -9,6 +9,7 @@ public class Pause : MonoBehaviour
     [SerializeField] float moveTime;
     [SerializeField] KeyCode pauseKey = KeyCode.Escape;
     CameraMovement camMove;
+    [SerializeField] AudioClip pausedMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class Pause : MonoBehaviour
         if (!GameManager.paused && Input.GetKeyDown(pauseKey))
         {
             camMove.StartMoving(pausePos, pauseRot, moveTime);
+            GameObject.FindGameObjectWithTag("Jukebox").GetComponent<AudioSource>().clip = pausedMenu;
+            GameObject.FindGameObjectWithTag("Jukebox").GetComponent<AudioSource>().Play();
             GameManager.paused = true;
         }
     }

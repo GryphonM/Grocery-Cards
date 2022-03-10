@@ -15,11 +15,15 @@ public class ClockInMachine : MonoBehaviour
     [SerializeField] Vector3 StartPosition;
     [SerializeField] Vector3 StartRotation;
     [SerializeField] float duration;
+    [Space(10)]
+    [SerializeField] AudioClip MainMusic;
+    RandomContainer myAudio;
 
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>().GetComponent<CameraMovement>();
         menuCardController = FindObjectOfType<MenuCards>();
+        myAudio = GetComponent<RandomContainer>();
     }
     void Update()
     {
@@ -31,7 +35,6 @@ public class ClockInMachine : MonoBehaviour
                     StartGame();
                     break;
                 case Action.Quit:
-                    Debug.Log("Quit Game");
                     Application.Quit();
                     break;
             }
@@ -56,6 +59,9 @@ public class ClockInMachine : MonoBehaviour
     public void StartGame()
     {
         mainCamera.StartMoving(StartPosition, StartRotation, duration);
+        myAudio.PlaySound(false);
+        GameObject.FindGameObjectWithTag("Jukebox").GetComponent<AudioSource>().clip = MainMusic;
+        GameObject.FindGameObjectWithTag("Jukebox").GetComponent<AudioSource>().Play();
         GameObject.FindGameObjectWithTag("Conveyor").GetComponent<AudioSource>().Play();
         gameUI.SetActive(true);
         GameManager.paused = false;

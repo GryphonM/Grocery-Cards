@@ -87,6 +87,21 @@ public class CustomerSpawner : MonoBehaviour
                 do
                     material = Random.Range(0, NPCMaterials.Length);
                 while (material == lastMaterial);
+                switch (material)
+                {
+                    case 0:
+                        currentCustomer.GetComponent<RandomContainer>().clips = GetComponent<DialogueClips>().NPC1Clips;
+                        break;
+                    case 1:
+                        currentCustomer.GetComponent<RandomContainer>().clips = GetComponent<DialogueClips>().NPC2Clips;
+                        break;
+                    case 2:
+                        currentCustomer.GetComponent<RandomContainer>().clips = GetComponent<DialogueClips>().NPC3Clips;
+                        break;
+                    case 3:
+                        currentCustomer.GetComponent<RandomContainer>().clips = GetComponent<DialogueClips>().NPC4Clips;
+                        break;
+                }
                 currentCustomer.transform.GetChild(0).GetComponent<MeshRenderer>().material = NPCMaterials[material];
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(Vector3.zero, Vector3.zero, EnterTime);
                 currentCustomerScript = currentCustomer.GetComponent<Customer>();
@@ -141,6 +156,7 @@ public class CustomerSpawner : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Jukebox").GetComponent<AudioSource>().Stop();
                 myAudio.clips[0] = loseClip;
                 myAudio.PlaySound(false);
+                currentCustomer.GetComponent<CameraMovement>().inCoroutine = false;
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
                 gameCam.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
                 manager = Instantiate(Manager);
