@@ -14,7 +14,7 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] Vector3 LookUpCameraRot;
     [SerializeField] float CameraEndTime;
     [SerializeField] GameObject Manager;
-    GameObject camera;
+    GameObject gameCam;
     [Space(10)]
     [SerializeField] Material[] NPCMaterials;
     [Tooltip("Goes From Easiest Customer to Hardest Customer")]
@@ -22,10 +22,12 @@ public class CustomerSpawner : MonoBehaviour
     int customerIndex = 0;
     GameObject currentCustomer;
     [HideInInspector] public Customer currentCustomerScript;
+    CardSystem cardSyst;
 
     [HideInInspector] public bool betweenCustomers = true;
     [HideInInspector] public bool allCards;
     [HideInInspector] public bool cardsDone;
+    bool characterLeft = false;
     [HideInInspector] public bool fired;
     bool spawnManager = true;
     
@@ -33,7 +35,8 @@ public class CustomerSpawner : MonoBehaviour
     void Start()
     {
         betweenCustomers = true;
-        camera = FindObjectOfType<Camera>().gameObject;
+        gameCam = FindObjectOfType<Camera>().gameObject;
+        cardSyst = FindObjectOfType<CardSystem>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,12 @@ public class CustomerSpawner : MonoBehaviour
         if (!GameManager.paused)
         {
             // Get Number of Cards in Play
-            int cardNumber = GameObject.FindGameObjectsWithTag("card").Length - 1;
+            int cardNumber = 0;
+            foreach (Card card in cardSyst.cards)
+            {
+                if (card != null)
+                    cardNumber++;
+            }
             // New Customer
             if (currentCustomer == null && betweenCustomers)
             {
@@ -56,15 +64,20 @@ public class CustomerSpawner : MonoBehaviour
                 betweenCustomers = false;
                 allCards = false;
                 cardsDone = false;
+                characterLeft = false;
             }
-            else if (currentCustomer != null && currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
+            else if (currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
             {
                 allCards = true;
                 if (cardNumber == 0)
                 {
                     bool bagsLeft = false;
                     cardsDone = true;
-                    currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
+                    if (!characterLeft)
+                    {
+                        currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
+                        characterLeft = true;
+                    }
                     foreach (Bag bag in FindObjectsOfType<Bag>())
                     {
                         if (bag.cardsDeposited > 0)
@@ -87,7 +100,7 @@ public class CustomerSpawner : MonoBehaviour
                 GameManager.paused = true;
                 fired = true;
                 currentCustomer.GetComponent<CameraMovement>().StartMoving(FinalPos, Vector3.zero, LeaveTime, true);
-                camera.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
+                gameCam.GetComponent<CameraMovement>().StartMoving(LookUpCameraPos, LookUpCameraRot, CameraEndTime);
                 GameObject manager = Instantiate(Manager);
                 manager.transform.position = SpawnPos;
                 manager.GetComponent<CameraMovement>().StartMoving(Vector3.zero, Vector3.zero, EnterTime);

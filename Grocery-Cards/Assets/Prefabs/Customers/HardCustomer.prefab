@@ -172,6 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bob: 0
-  isCustomer: 0
-  bobStrength: 1
-  bobSpeed: 1
+  isCustomer: 1
+  bobStrength: 0.5
+  bobSpeed: 3
