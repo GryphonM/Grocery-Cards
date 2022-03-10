@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bd3399f8ad052fd4aabc72bda9cb5504, type: 2}
+  - {fileID: 2100000, guid: 90fe52bda0fd9bf49aa37931c50406d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   bagSpace: 100
   bagType: 1
   cardsDeposited: 0
-  fullBag: {fileID: 2100000, guid: a6db065339eb29d41823df196d3fa48a, type: 2}
+  fullBag: {fileID: 2100000, guid: 5725a7ba022c2d2468fff2dd203077d9, type: 2}
 --- !u!54 &9035328903589073972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,6 +150,8 @@ MonoBehaviour:
   isCustomer: 0
   bobStrength: 1
   bobSpeed: 1
+  startY: 0
+  inCoroutine: 0
 --- !u!114 &6995909421603759758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.06857109, y: 0.377}
+  m_AnchoredPosition: {x: 0.071, y: -0.361}
   m_SizeDelta: {x: 1, y: 0.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &9035328903928553851
@@ -338,7 +340,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &9035328903928553828
 MonoBehaviour:
