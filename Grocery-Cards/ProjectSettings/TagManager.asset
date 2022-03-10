@@ -9,6 +9,7 @@ TagManager:
   - Start
   - Quit
   - Jukebox
+  - Conveyor
   layers:
   - Default
   - TransparentFX

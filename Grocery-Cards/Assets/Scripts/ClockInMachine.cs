@@ -56,6 +56,7 @@ public class ClockInMachine : MonoBehaviour
     public void StartGame()
     {
         mainCamera.StartMoving(StartPosition, StartRotation, duration);
+        GameObject.FindGameObjectWithTag("Conveyor").GetComponent<AudioSource>().Play();
         gameUI.SetActive(true);
         GameManager.paused = false;
     }
