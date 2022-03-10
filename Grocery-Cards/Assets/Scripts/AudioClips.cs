@@ -7,5 +7,4 @@ public class AudioClips : MonoBehaviour
     public AudioClip[] cardPickupClips;
     public AudioClip[] cardDepositClips;
     public AudioClip[] bagDepositClips;
-    public AudioClip[] smallTalkClips;
 }
