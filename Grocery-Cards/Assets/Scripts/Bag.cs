@@ -22,8 +22,8 @@ public class Bag : MonoBehaviour
             transform.GetChild(0).GetComponent<TextMeshPro>().SetText(bagSpace.ToString());
         if (cardsDeposited != 0 && fullBag != null)
             this.GetComponent<Renderer>().material = fullBag;
-
-        
+        if (bagSpace <= 4)
+            this.GetComponent<CardShake>().shake = true;
     }
     private void OnTriggerStay(Collider other)
     {
