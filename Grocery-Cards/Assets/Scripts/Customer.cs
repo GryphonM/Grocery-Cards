@@ -57,7 +57,15 @@ public class Customer : MonoBehaviour
         {
             delayTimer += Time.deltaTime;
 
-            if (cards.cards.Length > MaxCards)
+            // Get number of cards
+            int cardNum = 0;
+            foreach (Card card in cards.cards)
+            {
+                if (card != null)
+                    cardNum++;
+            }
+
+            if (cardNum > MaxCards)
             {
                 maxDelayTime = TimeLimitDelay - MaxCardTimeDecrease;
             }

@@ -8,6 +8,7 @@ TagManager:
   - bag
   - Start
   - Quit
+  - Jukebox
   layers:
   - Default
   - TransparentFX
