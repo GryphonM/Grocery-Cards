@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4479249, g: 0.4979233, b: 0.57548046, a: 1}
+  m_IndirectSpecularColor: {r: 0.44792527, g: 0.49792403, b: 0.5754818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1377,9 +1377,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 528457539, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528457539, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 528457539, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 528457539, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 528457541, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
       propertyPath: customer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200068068, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200068068, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200068068, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1495715830, guid: 52f26b0ceabb6be47b9ae3f364687a81, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4123,13 +4151,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650941517}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.013636342, y: -0.7069753, z: 0.013636342, w: 0.7069753}
   m_LocalPosition: {x: 4.84, y: 16.03, z: -24.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.21, y: -90, z: 0}
 --- !u!114 &650941521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4198,8 +4226,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posToMove: {fileID: 1454719057}
-  timeToCrash: 30
+  closeUpPos: {x: 17.5, y: 19.6, z: -125}
+  Jukebox: {fileID: 429564483}
+  bossMusic: {fileID: 8300000, guid: ba5cbf7f7cbb04547aaf552637cdbc7a, type: 3}
+  timeToCrash: 31
   CrashGame: 0
+  moveCloser: 0
 --- !u!1 &663816541
 GameObject:
   m_ObjectHideFlags: 0
@@ -6423,7 +6455,6 @@ MonoBehaviour:
   - {fileID: 3139820338742263465, guid: 996be1bb29d5b1043bae4f33a1ff1f60, type: 3}
   - {fileID: 2446809494720848837, guid: 310cd7e4281e2b64a800f41ad8a2a891, type: 3}
   - {fileID: 8548403370834680557, guid: 2ce1f02c209ca5440a323dd206dd5e93, type: 3}
-  customerIndex: 4
   currentCustomerScript: {fileID: 0}
   betweenCustomers: 0
   allCards: 0
@@ -8572,7 +8603,7 @@ Transform:
   m_Children:
   - {fileID: 815061655}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 7.59}
 --- !u!1 &1648547361
 GameObject:

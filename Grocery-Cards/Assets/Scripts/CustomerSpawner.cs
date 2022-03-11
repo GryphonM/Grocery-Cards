@@ -113,7 +113,7 @@ public class CustomerSpawner : MonoBehaviour
                 cardsDone = false;
                 characterLeft = false;
             }
-            else if (currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
+            else if (!betweenCustomers && currentCustomerScript.cardCount + cardNumber >= currentCustomerScript.totalCards)
             {
                 allCards = true;
                 if (cardNumber == 0)

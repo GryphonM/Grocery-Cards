@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ClockInMachine : MonoBehaviour
@@ -8,7 +9,7 @@ public class ClockInMachine : MonoBehaviour
     [HideInInspector] public int bagID = 4; // set bag id equal to its index in the bags array in CardSystem.cs
     CameraMovement mainCamera;
     MenuCards menuCardController;
-    enum Action {Start, Quit, Null};
+    enum Action {Start, Quit, WebQuit, Null};
     Action currentAction = Action.Null;
     [SerializeField] GameObject gameUI;
     [Space(10)]
@@ -37,6 +38,9 @@ public class ClockInMachine : MonoBehaviour
                 case Action.Quit:
                     Application.Quit();
                     break;
+                case Action.WebQuit:
+                    SceneManager.LoadScene(0);
+                    break;
             }
         }
     }
@@ -54,6 +58,9 @@ public class ClockInMachine : MonoBehaviour
                 currentAction = Action.Null;
                 break;
         }
+
+        if (currentAction == Action.Quit && Application.platform == RuntimePlatform.WindowsPlayer)
+            currentAction = Action.WebQuit;
     }
 
     public void StartGame()

@@ -94,10 +94,10 @@ public class Customer : MonoBehaviour
     public void BagDeposit(Bag depositedBag)
     {
         int value = DepositIncrease - depositedBag.bagSpace;
+        if (custSpawn.cardsDone)
+            value = DepositIncrease;
         if (value <= 0)
             GetComponent<RandomContainer>().PlaySound(true);
-        if (custSpawn.cardsDone)
-            value = depositedBag.bagSpace;
         Satisfaction += value;
         if (Satisfaction > MaxSatisfaction)
             Satisfaction = MaxSatisfaction;

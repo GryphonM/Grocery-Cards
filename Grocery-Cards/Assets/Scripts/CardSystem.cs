@@ -125,7 +125,8 @@ public class CardSystem : MonoBehaviour
             if (currentBankableID == 4 && Input.GetKeyUp(KeyCode.Mouse0) && cardToParentGameObject.tag == "bag")
             {
                 //make bag connect to the satifaction system
-                custSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
+                if (custSpawn.currentCustomerScript != null)
+                    custSpawn.currentCustomerScript.BagDeposit(cardToParentGameObject.GetComponent<Bag>());
                 cardToParentGameObject.GetComponent<RandomContainer>().clips = myClips.bagDepositClips;
                 cardToParentGameObject.GetComponent<RandomContainer>().PlaySound(false);
                 cardToParentGameObject.GetComponent<CameraMovement>().StartMovingBetter(new Vector3(cardToParentGameObject.transform.position.x + 10, cardToParentGameObject.transform.position.y, cardToParentGameObject.transform.position.z), cardToParentGameObject.transform.rotation, .25f, true);
