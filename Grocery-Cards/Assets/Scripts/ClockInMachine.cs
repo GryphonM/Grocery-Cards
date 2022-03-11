@@ -59,7 +59,7 @@ public class ClockInMachine : MonoBehaviour
                 break;
         }
 
-        if (currentAction == Action.Quit && Application.platform == RuntimePlatform.WindowsPlayer)
+        if (currentAction == Action.Quit && Application.platform == RuntimePlatform.WebGLPlayer)
             currentAction = Action.WebQuit;
     }
 
