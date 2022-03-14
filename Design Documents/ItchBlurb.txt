@@ -1,0 +1,15 @@
+Drag n' Bag is a fast-paced puzzle game requiring you to sort items into bags based on what kind of item they are. Be mindful of how much space is left in the bag, overfilling it may cause the customers to get angry, yet not packing it tightly enough could lead to disatisfied customers as well. If you do too poorly, the manager may come and reprimand you, requiring you to work longer.
+
+Controls:
+Left Mouse Button: Pick Up Card
+W: Look Up
+S: Look Down
+Escape: Pause
+
+Credits:
+Devin Carlson - Producer/Artist
+Mason Colbert - Artist
+Tyler Dean - Programmer
+Joseph Jaeger - Sound Designer
+Gryphon McLaughlin - Programmer
+Cooper Nowers - Artist
