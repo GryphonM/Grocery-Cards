@@ -17,6 +17,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         startY = transform.position.y;
+        inCoroutine = false;
     }
 
     // Update is called once per frame

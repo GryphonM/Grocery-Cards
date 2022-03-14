@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
     public GameObject tutorial;
     public GameObject posToMove;
     Vector3 posToReturn;
+    bool hideAfterTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +17,21 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(tutorial.GetComponent<CameraMovement>().inCoroutine == false && hideAfterTime == true)
+        {
+            tutorial.SetActive(false);
+        }
     }
 
     public void ShowTutorial()
-    {       
-        Debug.Log("Show tutorial");
-        tutorial.GetComponent<CameraMovement>().StartMovingBetter(this.transform.position, posToMove.transform.rotation, 2,true);
+    {
+        hideAfterTime = false;
+        tutorial.SetActive(true);
+        tutorial.GetComponent<CameraMovement>().StartMovingBetter(this.transform.position, posToMove.transform.rotation, 2);
     }
     public void HideTutorial()
     {
         tutorial.GetComponent<CameraMovement>().StartMovingBetter(posToReturn, posToMove.transform.rotation, 2);
+        hideAfterTime = true;
     }
 }
