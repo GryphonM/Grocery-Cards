@@ -128,7 +128,10 @@ public class CustomerSpawner : MonoBehaviour
                     foreach (Bag bag in FindObjectsOfType<Bag>())
                     {
                         if (bag.cardsDeposited > 0)
+                        {
                             bagsLeft = true;
+                            bag.GetComponent<CardShake>().shake = true;
+                        }
                     }
                     if (!bagsLeft)
                     {
