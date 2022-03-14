@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         posToReturn = tutorial.transform.position;
+        tutorial.SetActive(false);
     }
 
     // Update is called once per frame
