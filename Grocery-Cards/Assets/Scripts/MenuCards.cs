@@ -7,6 +7,8 @@ public class MenuCards : MonoBehaviour
     Camera mainCamera;
     int layerMask = 1 << 6;
     [SerializeField] GameObject mouseCursor3d;
+    [SerializeField] int upQueue = 3001;
+    int downQueue = 3000;
     bool parentCardToMouse = false;
     GameObject cardToParentGameObject;
     CustomerSpawner custSpawn;
@@ -42,12 +44,15 @@ public class MenuCards : MonoBehaviour
             if (parentCardToMouse == true && mouseCursor3d != null)
             {
                 cardToParentGameObject.transform.position = new Vector3(cardToParentGameObject.transform.position.x, mouseCursor3d.transform.position.y, mouseCursor3d.transform.position.z);
+                cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue = upQueue;
+                downQueue = cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue;
             }
 
             //Release card
             if (Input.GetKeyUp(KeyCode.Mouse0) && parentCardToMouse != false)
             {
                 cardToParentGameObject.transform.position = cardToParentGameObject.GetComponent<StartCard>().StartPos;
+                cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue = downQueue;
                 parentCardToMouse = false;
             }
         }
