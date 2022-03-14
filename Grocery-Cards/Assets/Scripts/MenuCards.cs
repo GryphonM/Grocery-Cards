@@ -37,6 +37,8 @@ public class MenuCards : MonoBehaviour
                 {
                     cardToParentGameObject = raycastHitCards.transform.gameObject;
                     parentCardToMouse = true;
+                    downQueue = cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue;
+                    cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue = upQueue;
                 }
             }
 
@@ -44,8 +46,6 @@ public class MenuCards : MonoBehaviour
             if (parentCardToMouse == true && mouseCursor3d != null)
             {
                 cardToParentGameObject.transform.position = new Vector3(cardToParentGameObject.transform.position.x, mouseCursor3d.transform.position.y, mouseCursor3d.transform.position.z);
-                cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue = upQueue;
-                downQueue = cardToParentGameObject.GetComponent<MeshRenderer>().material.renderQueue;
             }
 
             //Release card

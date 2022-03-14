@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCursor3d: {fileID: 680796930}
+  upQueue: 3002
 --- !u!4 &271328682
 Transform:
   m_ObjectHideFlags: 0
