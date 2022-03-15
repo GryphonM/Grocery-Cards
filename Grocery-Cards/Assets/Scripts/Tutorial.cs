@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         posToReturn = tutorial.transform.position;
+        tutorial.GetComponent<CameraMovement>().inCoroutine = false;
         tutorial.SetActive(false);
     }
 
@@ -21,6 +22,7 @@ public class Tutorial : MonoBehaviour
         if(tutorial.GetComponent<CameraMovement>().inCoroutine == false && hideAfterTime == true)
         {
             tutorial.SetActive(false);
+            hideAfterTime = false;
         }
     }
 
